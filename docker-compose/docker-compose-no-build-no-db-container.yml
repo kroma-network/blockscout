@@ -14,7 +14,7 @@ services:
     depends_on:
       - smart-contract-verifier
       - redis_db
-    image: blockscout/blockscout:${DOCKER_TAG:-latest}
+    image: lightscale/l2-blockscout:latest
     restart: always
     container_name: 'blockscout'
     command: bash -c "bin/blockscout eval \"Elixir.Explorer.ReleaseTasks.create_and_migrate()\" && bin/blockscout start"
@@ -24,8 +24,8 @@ services:
       -  ./envs/common-blockscout.env
     environment:
         ETHEREUM_JSONRPC_VARIANT: 'geth'
-        ETHEREUM_JSONRPC_HTTP_URL: http://host.docker.internal:8545/
-        DATABASE_URL: postgresql://postgres:@host.docker.internal:5432/blockscout?ssl=false
+        ETHEREUM_JSONRPC_HTTP_URL: https://l2geth.l2.lightscale.dev:8545/
+        DATABASE_URL: postgresql://postgres:Lightscale!12@blockscout.cglju1rjqvkc.ap-northeast-2.rds.amazonaws.com:5432/blockscout2?ssl=false
         ECTO_USE_SSL: 'false'
         SECRET_KEY_BASE: '56NtB48ear7+wMSf0IQuWDAAazhpb31qyc7GiyspBP2vh7t5zlCsF5QDv76chXeN'
     ports:
@@ -41,13 +41,3 @@ services:
       -  ./envs/common-smart-contract-verifier.env
     ports:
       - 8043:8043
-
-  visualizer:
-    image: ghcr.io/blockscout/visualizer:${VISUALIZER_DOCKER_TAG:-latest}
-    restart: always
-    container_name: 'visualizer'
-    env_file:
-      -  ./envs/common-visualizer.env
-    ports:
-      - 8050:8050
-
