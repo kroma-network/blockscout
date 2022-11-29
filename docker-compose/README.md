@@ -8,6 +8,15 @@ Runs Blockscout locally in Docker containers with [docker-compose](https://githu
 - Docker-compose 2.x.x+
 - Running Ethereum JSON RPC client
 
+## Note!!! 
+```bash
+cd docker 
+make build
+cd ..
+cd docker-compose
+docker-compose -f docker-compose-no-build-no-db-container.yml -up
+```
+
 ## Building Docker containers from source
 
 ```bash
