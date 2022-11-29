@@ -8,6 +8,12 @@ Runs Blockscout locally in Docker containers with [docker-compose](https://githu
 - Docker-compose 2.x.x+
 - Running Ethereum JSON RPC client
 
+## Note!!! 
+
+- blockscout/blockscout:4.1.7을 사용하고 있다.(해당 태그만 arm64지원)
+- arm64가 아닌 amd64를 사용해야 한다면 blockscout:blockscout:latest 를 사용
+- 아래의 docker-compose -f docker-compose-no-build-no-db-container.yml up 를 사용
+
 ## Building Docker containers from source
 
 ```bash
