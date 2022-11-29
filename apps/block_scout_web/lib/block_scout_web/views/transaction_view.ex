@@ -401,6 +401,22 @@ defmodule BlockScoutWeb.TransactionView do
     end
   end
 
+  def l1_gas_price(%Transaction{l1_gas_price: l1_gas_price}, unit) when unit in ~w(wei gwei ether)a do
+    format_wei_value(l1_gas_price, unit)
+  end
+
+  def l1_gas_used(%Transaction{l1_gas_used: l1_gas_used}) do
+    Number.to_string!(l1_gas_used)
+  end
+
+  def l1_fee(%Transaction{l1_fee: l1_fee}) do
+    Number.to_string!(l1_fee)
+  end
+
+  def l1_fee_scalar(%Transaction{l1_fee_scalar: l1_fee_scalar}) do
+    l1_fee_scalar
+  end
+
   def hash(%Transaction{hash: hash}) do
     to_string(hash)
   end

@@ -1,4 +1,8 @@
 <% block = @transaction.block %>
+<% l1_fee = @transaction.l1_fee %>
+<% l1_gas_used = @transaction.l1_gas_used %>
+<% l1_gas_price = @transaction.l1_gas_price %>
+<% l1_fee_scalar = @transaction.l1_fee_scalar %>
 <% from_address_hash = @transaction.from_address_hash %>
 <% from_address = @transaction.from_address %>
 <% to_address_hash = @transaction.to_address_hash %>
@@ -7,7 +11,7 @@
 <% base_fee_per_gas = if block, do: block.base_fee_per_gas, else: nil %>
 <% max_priority_fee_per_gas = @transaction.max_priority_fee_per_gas %>
 <% max_fee_per_gas = @transaction.max_fee_per_gas %>
-<% burned_fee = 
+<% burned_fee =
   if !is_nil(max_fee_per_gas) and !is_nil(@transaction.gas_used) and !is_nil(base_fee_per_gas) do
     if Decimal.compare(max_fee_per_gas.value, 0) == :eq do
       %Wei{value: Decimal.new(0)}
@@ -119,7 +123,7 @@
                   <% else %>
                     <%= render BlockScoutWeb.FormView, "_tag.html", text: formatted_status, additional_classes: ["success", "large"] %></span>
                   <% end %>
-                
+
                 <%= if confirmations > 0 do %>
                   <span class="bs-label large ml-2 confirmations-label"><%= gettext "Confirmed by " %><span data-selector="block-confirmations"><%= confirmations %></span><%= " " <> confirmations_ds_name(confirmations) %></span>
                 <% end %>
@@ -345,6 +349,51 @@
               <% end %>
             </dd>
           </dl>
+
+          <%= if !is_nil(l1_gas_price) do %>
+          <dl class="row">
+            <dt class="col-sm-3 col-lg-2 text-muted">
+              <%= render BlockScoutWeb.CommonComponentsView, "_i_tooltip_2.html",
+                text: gettext("l1_gas_price") %>
+              <%= gettext "l1 Gas Price" %>
+            </dt>
+            <dd class="col-sm-9 col-lg-10"> <%= l1_gas_price(@transaction, :gwei) %> </dd>
+          </dl>
+          <% end %>
+
+          <%= if !is_nil(l1_gas_used) do %>
+          <dl class="row">
+            <dt class="col-sm-3 col-lg-2 text-muted">
+              <%= render BlockScoutWeb.CommonComponentsView, "_i_tooltip_2.html",
+                text: gettext("l1_gas_used") %>
+              <%= gettext "l1 Gas Used" %>
+            </dt>
+            <dd class="col-sm-9 col-lg-10"> <%= l1_gas_used(@transaction)%> </dd>
+          </dl>
+          <% end %>
+
+          <%= if !is_nil(l1_fee) do %>
+          <dl class="row">
+            <dt class="col-sm-3 col-lg-2 text-muted">
+              <%= render BlockScoutWeb.CommonComponentsView, "_i_tooltip_2.html",
+                text: gettext("l1_fee") %>
+              <%= gettext "l1 Fee" %>
+            </dt>
+            <dd class="col-sm-9 col-lg-10"> <%= l1_fee(@transaction)%> </dd>
+          </dl>
+          <% end %>
+
+          <%= if !is_nil(l1_fee_scalar) do %>
+          <dl class="row">
+            <dt class="col-sm-3 col-lg-2 text-muted">
+              <%= render BlockScoutWeb.CommonComponentsView, "_i_tooltip_2.html",
+                text: gettext("l1_fee_scalar") %>
+              <%= gettext "l1 Fee Scalar" %>
+            </dt>
+            <dd class="col-sm-9 col-lg-10"> <%= l1_fee_scalar(@transaction)%> </dd>
+          </dl>
+          <% end %>
+
           <!-- Gas Price -->
           <dl class="row">
             <dt class="col-sm-3 col-lg-2 text-muted">
@@ -403,7 +452,7 @@
               </dt>
               <dd class="col-sm-9 col-lg-10"> <%= format_wei_value(priority_fee, :ether) %> </dd>
             </dl>
-          <% end %> 
+          <% end %>
            <%= if !is_nil(burned_fee) do %>
             <dl class="row">
               <dt class="col-sm-3 col-lg-2 text-muted">
