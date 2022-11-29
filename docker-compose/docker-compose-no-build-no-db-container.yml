@@ -25,7 +25,7 @@ services:
     environment:
         ETHEREUM_JSONRPC_VARIANT: 'geth'
         ETHEREUM_JSONRPC_HTTP_URL: https://l2geth.l2.lightscale.dev:8545/
-        DATABASE_URL: postgresql://postgres:Lightscale!12@blockscout.cglju1rjqvkc.ap-northeast-2.rds.amazonaws.com:5432/blockscout2?ssl=false
+        DATABASE_URL: postgresql://postgres:[password]]@[endpoint]]:5432/blockscout2?ssl=false
         ECTO_USE_SSL: 'false'
         SECRET_KEY_BASE: '56NtB48ear7+wMSf0IQuWDAAazhpb31qyc7GiyspBP2vh7t5zlCsF5QDv76chXeN'
     ports:
