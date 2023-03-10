@@ -1,6 +1,35 @@
+// general
+$primary: #5637FB;
+$secondary: #5637FB;
+
+// dashboard
+$dashboard-banner-gradient-start: $primary; // gradient begin
+$dashboard-banner-gradient-end: $primary; // gradient end
+$dashboard-banner-network-plain-container-background-color: $primary; // stats bg
+.dashboard-banner-network-plain-container {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.dashboard-banner-network-plain-container::after {
+  box-shadow: none !important;
+}
+
+.layout-container {
+  .dashboard-banner-container {
+    background-color: $primary !important;
+    background-image: linear-gradient(to bottom, $dashboard-banner-gradient-start, $dashboard-banner-gradient-end);
+  }
+}
+
 // GLB
 .container-fluid.navbar-container {
   width: fit-content;
+}
+
+// card
+.card {
+  box-shadow: none !important;
 }
 
 // footer
