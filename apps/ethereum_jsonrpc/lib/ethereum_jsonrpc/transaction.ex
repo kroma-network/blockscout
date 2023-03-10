@@ -14,7 +14,7 @@ defmodule EthereumJSONRPC.Transaction do
   alias EthereumJSONRPC
 
   @type elixir :: %{
-          String.t() => EthereumJSONRPC.address() | EthereumJSONRPC.hash() | String.t() | non_neg_integer() | nil
+          String.t() => EthereumJSONRPC.address() | EthereumJSONRPC.hash() | String.t() | non_neg_integer() | boolean | nil
         }
 
   @typedoc """
@@ -448,7 +448,7 @@ defmodule EthereumJSONRPC.Transaction do
   #
   # "txType": to avoid FunctionClauseError when indexing Wanchain
   defp entry_to_elixir({key, value})
-       when key in ~w(blockHash condition creates from hash input jsonrpc publicKey raw to txType),
+       when key in ~w(blockHash condition creates from hash input jsonrpc publicKey raw to txType sourceHash isSystemTx),
        do: {key, value}
 
   # specific to Nethermind client
@@ -462,12 +462,12 @@ defmodule EthereumJSONRPC.Transaction do
   end
 
   # as always ganache has it's own vision on JSON RPC standard
-  defp entry_to_elixir({key, nil}) when key in ~w(r s v) do
+  defp entry_to_elixir({key, nil}) when key in ~w(r s v gasPrice) do
     {key, 0}
   end
 
   # quantity or nil for pending
-  defp entry_to_elixir({key, quantity_or_nil}) when key in ~w(blockNumber transactionIndex) do
+  defp entry_to_elixir({key, quantity_or_nil}) when key in ~w(blockNumber transactionIndex mint) do
     elixir =
       case quantity_or_nil do
         nil -> nil
