@@ -3,7 +3,7 @@ name: ci
 on:
   push:
     branches:
-      - ci/add-ci-pipeline
+      - dev
 
 jobs:
   ci:
@@ -48,8 +48,8 @@ jobs:
         with:
           context: .
           file: ./docker/Dockerfile
-          cache-from: type=registry,ref=wemixkanvas/blockscout:buildcache
-          cache-to: type=registry,ref=wemixkanvas/blockscout:buildcache,mode=max
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
           push: true
           tags: ${{ secrets.AWS_ECR_REPOSITORY }}/lightscale/kanvas-blockscout:${{ steps.prepare.outputs.docker-tag }}
           build-args: |
