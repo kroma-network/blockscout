@@ -3,7 +3,7 @@ name: ci
 on:
   push:
     branches:
-      - dev
+      - ci/add-ci-pipeline
 
 jobs:
   ci:
@@ -51,7 +51,7 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
           push: true
-          tags: ${{ secrets.AWS_ECR_REPOSITORY }}/lightscale/kanvas-blockscout:${{ steps.prepare.outputs.docker-tag }}
+          tags: ${{ secrets.AWS_ECR_REPOSITORY }}/lightscale/kanvas-blockscout:${{ steps.prepare.outputs.docker-tag }}, ${{ secrets.AWS_ECR_REPOSITORY }}/lightscale/kanvas-blockscout:latest
           build-args: |
             CACHE_EXCHANGE_RATES_PERIOD=
             DISABLE_READ_API=false
