@@ -59,6 +59,18 @@
                       to: pending_transaction_path(@conn, :index)
                     ) %>
                 <% end %>
+                <%= link(
+                    gettext("L1 -> L2"),
+                    to: "https://scanner.dev.kanvas-dev.io/txs-enqueued",
+                    class: "dropdown-item #{tab_status("txs", @conn.request_path)}",
+                    target: "_blank"
+                  ) %>
+                <%= link(
+                    gettext("L2 -> L1"),
+                    to: "https://scanner.dev.kanvas-dev.io/txs-exit",
+                    class: "dropdown-item #{tab_status("txs", @conn.request_path)}",
+                    target: "_blank"
+                  ) %>
                 <%= link(gettext("Verified contracts"),
                     to: verified_contracts_path(@conn, :index),
                     class: "dropdown-item #{tab_status("reorgs", @conn.request_path)}")%>
