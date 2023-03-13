@@ -54,7 +54,7 @@
                 <%= if variant !== EthereumJSONRPC.Besu do %>
                 <%= link(
                       gettext("Pending"),
-                      class: "border-bottom dropdown-item #{tab_status("pending-transactions", @conn.request_path)}",
+                      class: "dropdown-item #{tab_status("pending-transactions", @conn.request_path)}",
                       "data-test": "pending_transactions_link",
                       to: pending_transaction_path(@conn, :index)
                     ) %>
@@ -62,13 +62,13 @@
                 <%= link(
                     gettext("L1 -> L2"),
                     to: "https://scanner.dev.kanvas-dev.io/txs-enqueued",
-                    class: "dropdown-item #{tab_status("txs", @conn.request_path)}",
+                    class: "dropdown-item #{tab_status("l1-l2", @conn.request_path)}",
                     target: "_blank"
                   ) %>
                 <%= link(
                     gettext("L2 -> L1"),
                     to: "https://scanner.dev.kanvas-dev.io/txs-exit",
-                    class: "dropdown-item #{tab_status("txs", @conn.request_path)}",
+                    class: "border-bottom dropdown-item #{tab_status("l2-l1", @conn.request_path)}",
                     target: "_blank"
                   ) %>
                 <%= link(gettext("Verified contracts"),
