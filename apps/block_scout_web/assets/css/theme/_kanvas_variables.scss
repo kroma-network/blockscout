@@ -32,5 +32,48 @@ $dashboard-banner-network-plain-container-background-color: $primary; // stats b
   box-shadow: none !important;
 }
 
+// tile
+$tile-type-transaction-color: white;
+.tile.tile-type-transaction {
+  border-left: 1px solid $border-color !important;
+
+  .tile-body .tile-transaction-type-block {
+    background-color: unset;
+    border-bottom: none;
+    border-top: none;
+    border-right: none;
+    color: unset;
+    padding: 0;
+  }
+
+  .tile-label-group {
+    width: fit-content;
+    padding: 5px 6px;
+    background-color: #191919;
+  }
+
+  .tile-status-label-group {
+    width: fit-content;
+    padding: 5px 6px;
+    background-color: $primary;
+    color: white;
+  }
+}
+
+.tile[class*=status--error] {
+  .tile-label {
+    color: white !important;
+  }
+
+  .tile-status-label-group {
+    background-color: #D00025;
+  }
+
+  .tile-status-error-label {
+    padding: 10px;
+    color: #D00025;
+  }
+}
+
 // footer
 $footer-background-color: #191919;
