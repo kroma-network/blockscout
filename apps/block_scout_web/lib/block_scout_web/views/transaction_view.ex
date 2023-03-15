@@ -352,6 +352,14 @@ defmodule BlockScoutWeb.TransactionView do
     end
   end
 
+  def formatted_error(status) do
+    case status do
+      {:error, :awaiting_internal_transactions} -> gettext("Awaiting internal transactions for reason")
+      {:error, reason} when is_binary(reason) -> gettext("%{reason}", reason: reason)
+      _ -> nil
+    end
+  end
+
   def from_or_to_address?(_token_transfer, nil), do: false
 
   def from_or_to_address?(%{from_address_hash: from_hash, to_address_hash: to_hash}, %Address{hash: hash}) do
