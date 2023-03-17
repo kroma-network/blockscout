@@ -14,10 +14,10 @@ defmodule BlockScoutWeb.CSPHeader do
         connect-src 'self' #{websocket_endpoints(conn)} wss://*.bridge.walletconnect.org/ https://request-global.czilladx.com/ https://raw.githubusercontent.com/trustwallet/assets/ https://registry.walletconnect.org/data/wallets.json https://*.poa.network;\
         default-src 'self';\
         script-src 'self' 'unsafe-inline' 'unsafe-eval' https://coinzillatag.com https://www.google.com https://www.gstatic.com;\
-        style-src 'self' 'unsafe-inline' 'unsafe-eval' https://fonts.googleapis.com;\
+        style-src 'self' 'unsafe-inline' 'unsafe-eval' https://fonts.googleapis.com https://cdn.jsdelivr.net;\
         img-src 'self' * data:;\
         media-src 'self' * data:;\
-        font-src 'self' 'unsafe-inline' 'unsafe-eval' https://fonts.gstatic.com data:;\
+        font-src 'self' 'unsafe-inline' 'unsafe-eval' https://fonts.gstatic.com data: https://cdn.jsdelivr.net;\
         frame-src 'self' 'unsafe-inline' 'unsafe-eval' https://request-global.czilladx.com/ https://www.google.com;\
       "
     })
