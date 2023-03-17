@@ -21,6 +21,33 @@ $dashboard-banner-network-plain-container-background-color: $primary; // stats b
     background-color: $primary !important;
     background-image: linear-gradient(to bottom, $dashboard-banner-gradient-start, $dashboard-banner-gradient-end);
   }
+
+  .dashboard-banner-network-stats-item {
+    &::before {
+      background-color: unset;
+    }
+
+    .dashboard-banner-network-stats-label {
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 14px;
+    }
+
+    .dashboard-banner-network-stats-value {
+      font-weight: normal;
+      font-size: 30px;
+      line-height: 30px;
+    }
+  }
+
+  .dashboard-banner-chart-legend .dashboard-banner-chart-legend-item {
+    &.gas-price-oracle::before {
+      background-color: unset;
+    }
+    &.tx-per-day::before {
+      background-color: unset;
+    }
+  }
 }
 
 // GLB
@@ -31,6 +58,12 @@ $dashboard-banner-network-plain-container-background-color: $primary; // stats b
 // card
 .card {
   box-shadow: none !important;
+
+  .card-title {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 26px;
+  }
 }
 
 // tile
@@ -76,5 +109,27 @@ $tile-type-transaction-color: white;
   }
 }
 
+// buttons
+$btn-line-color: #000000;
+.card-body .btn-line {
+  border: none;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+// navigation
+.navbar {
+  height: 90px;
+
+  .navbar-nav .nav-link {
+    font-weight: 600;
+    font-size: 16px !important;
+    line-height: 15px;
+    color: rgba(#191919, 0.7) !important;
+  }
+}
+
 // footer
 $footer-background-color: #191919;
+$footer-text-color: rgba(#FFFFFF, 0.4)
