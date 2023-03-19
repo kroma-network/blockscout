@@ -50,7 +50,16 @@ function xAxe (fontColor) {
       stepSize: 14
     },
     ticks: {
-      color: fontColor
+      color: fontColor,
+      maxRotation: 0,
+      minRotation: 0,
+      callback: function (value, _index, _values) {
+        if (_index === 1 || _index === _values.length - 2 || _index === Math.floor(_values.length / 2)) {
+          const date = new Date(value)
+          return `${date.getMonth() + 1}/${date.getDate()}`;
+        }
+        return undefined;
+      },
     }
   }
 }
