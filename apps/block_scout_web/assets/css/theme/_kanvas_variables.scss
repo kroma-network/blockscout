@@ -44,6 +44,7 @@ $dashboard-banner-network-plain-container-background-color: $primary; // stats b
     &.gas-price-oracle::before {
       background-color: unset;
     }
+
     &.tx-per-day::before {
       background-color: unset;
     }
@@ -67,6 +68,22 @@ $dashboard-banner-network-plain-container-background-color: $primary; // stats b
 }
 
 // tile
+.card-chain-blocks .tile.tile-type-block {
+  background: linear-gradient(122.05deg, #7AFFF7 5.21%, #3817FF 36.17%, rgba(66, 255, 142, 0.82) 72.21%, rgba(124, 0, 222, 0.94) 95.29%), linear-gradient(0deg, #FFFFFF, #FFFFFF);
+  border: 2.5px solid;
+  border-image-source: linear-gradient(122.05deg, #7AFFF7 5.21%, #3817FF 36.17%, rgba(66, 255, 142, 0.82) 72.21%, rgba(124, 0, 222, 0.94) 95.29%);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px -2px #5637FB26;
+
+  > * {
+    background-color: #ffffff;
+  }
+
+  > .tile-title {
+    margin: 0 !important;
+  }
+}
+
 $tile-type-transaction-color: white;
 .tile.tile-type-transaction {
   border-left: 1px solid $border-color !important;
@@ -111,6 +128,14 @@ $tile-type-transaction-color: white;
 
 // buttons
 $btn-line-color: #000000;
+.card-body {
+  .col-lg-3 {
+    -ms-flex: 0 0 20%;
+    flex: 0 0 20%;
+    max-width: 20%;
+  }
+}
+
 .card-body .btn-line {
   border: none;
   font-weight: normal;
