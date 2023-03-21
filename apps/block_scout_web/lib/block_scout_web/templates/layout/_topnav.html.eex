@@ -36,7 +36,7 @@
             </div>
           </li>
           <li class="nav-item dropdown">
-            <a href="#" role="button" id="navbarTokensDropdown" class="nav-link topnav-nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a href="#" role="button" id="navbarTransactionsDropdown" class="nav-link topnav-nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= gettext("Transactions") %>
             </a>
             <div class="dropdown-menu" aria-labeledby="navbarTransactionsDropdown">
