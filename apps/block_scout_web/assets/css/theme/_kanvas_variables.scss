@@ -4,6 +4,7 @@ $secondary: #5637FB;
 $font-family: "Pretendard";
 
 // dashboard
+$header-icon-border-color-hover: #ffffff;
 $dashboard-line-color-transactions: #2DEAA2;
 $dashboard-banner-gradient-start: $primary; // gradient begin
 $dashboard-banner-gradient-end: $primary; // gradient end
@@ -57,6 +58,13 @@ $dashboard-banner-network-plain-container-background-color: $primary; // stats b
   width: fit-content;
 }
 
+.dropdown-toggle::after {
+  border: unset !important;
+  background-image: url("../static/images/icon-chevron-down.svg");
+  width: 12px;
+  height: 7px;
+}
+
 // card
 .card {
   box-shadow: none !important;
@@ -83,9 +91,20 @@ $dashboard-banner-network-plain-container-background-color: $primary; // stats b
   > .tile-title {
     margin: 0 !important;
   }
+
+  .tile-bottom-contents .text-truncate {
+    color: #191919;
+
+    * {
+      color: #191919;
+    }
+  }
 }
 
 $tile-type-transaction-color: white;
+$tile-body-a-color: #5637FB;
+$tile-title-color: #191919;
+$text-muted: #8F8F8F;
 .tile.tile-type-transaction {
   border-left: 1px solid $border-color !important;
 
@@ -134,6 +153,7 @@ $btn-line-color: #000000;
     -ms-flex: 0 0 20%;
     flex: 0 0 20%;
     max-width: 20%;
+    max-height: 20%;
   }
 }
 
@@ -142,9 +162,17 @@ $btn-line-color: #000000;
   font-weight: normal;
   font-size: 16px;
   line-height: 26px;
+
+  &:hover {
+    background-color: unset;
+    color: unset;
+  }
 }
 
 // navigation
+#navbarDropdown {
+  cursor: default;
+}
 .navbar {
   height: 90px;
 
