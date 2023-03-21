@@ -30,9 +30,6 @@
                     gettext("Blocks"),
                     to: blocks_path(@conn, :index),
                     class: "dropdown-item #{tab_status("blocks", @conn.request_path)}")%>
-              <%= link(gettext("Uncles"),
-                    to: uncle_path(@conn, :uncle),
-                    class: "dropdown-item #{tab_status("uncles", @conn.request_path)}")%>
               <%= link(gettext("Forked Blocks (Reorgs)"),
                     to: reorg_path(@conn, :reorg),
                     class: "border-bottom dropdown-item #{tab_status("reorgs", @conn.request_path)}")%>
@@ -71,9 +68,6 @@
                     class: "border-bottom dropdown-item #{tab_status("l2-l1", @conn.request_path)}",
                     target: "_blank"
                   ) %>
-                <%= link(gettext("Verified contracts"),
-                    to: verified_contracts_path(@conn, :index),
-                    class: "dropdown-item #{tab_status("reorgs", @conn.request_path)}")%>
             </div>
           </li>
           <li class="nav-item dropdown">
