@@ -8,6 +8,7 @@
           <button data-chart-error-message class="alert alert-danger col-12 text-left mt-5" style="display: none;">
             <span><%= gettext("There was a problem loading the chart.") %></span>
           </button>
+          <h2 class="dashboard-banner-chart-title">Daily Transactions</h2>
           <canvas data-chart="historyChart"
                   data-history_chart_paths=
                   '{<%= for {{key, value}, x} <- Enum.with_index(@chart_data_paths) do %>
@@ -160,8 +161,8 @@
         <div hidden data-selector="loading-message" class="col-lg-3" >
          <div data-selector="chain-block">
            <div class="tile tile-type-block n-p d-flex flex-column">
-             <a class="tile-title"><span class="tile-loader tile-label-loader"></span> </a>
              <div class="tile-bottom-contents">
+               <a class="tile-title"><span class="tile-loader tile-label-loader"></span> </a>
                <div class="dark-block-loader"></div>
                <div class="dark-block-loader"></div>
              </div>
@@ -171,8 +172,8 @@
         <div hidden data-selector="loading-message" class="col-lg-3" >
          <div data-selector="chain-block">
            <div class="tile tile-type-block n-p d-flex flex-column">
-             <a class="tile-title"><span class="tile-loader tile-label-loader"></span> </a> 
              <div class="tile-bottom-contents">
+               <a class="tile-title"><span class="tile-loader tile-label-loader"></span> </a>
                <div class="dark-block-loader"></div>
                <div class="dark-block-loader"></div>
              </div>
@@ -182,8 +183,8 @@
         <div hidden data-selector="loading-message" class="col-lg-3" >
          <div data-selector="chain-block">
            <div class="tile tile-type-block n-p d-flex flex-column">
-             <a class="tile-title"><span class="tile-loader tile-label-loader"></span> </a> 
              <div class="tile-bottom-contents">
+               <a class="tile-title"><span class="tile-loader tile-label-loader"></span> </a>
                <div class="dark-block-loader"></div>
                <div class="dark-block-loader"></div>
              </div>
@@ -193,8 +194,8 @@
         <div hidden data-selector="loading-message" class="col-lg-3" >
          <div data-selector="chain-block">
            <div class="tile tile-type-block n-p d-flex flex-column">
-             <a class="tile-title"><span class="tile-loader tile-label-loader"></span> </a>
              <div class="tile-bottom-contents">
+              <a class="tile-title"><span class="tile-loader tile-label-loader"></span> </a>
               <div class="dark-block-loader"></div>
               <div class="dark-block-loader"></div>
             </div>
@@ -204,10 +205,10 @@
           <div hidden data-selector="loading-message" class="col-lg-3" >
               <div data-selector="chain-block">
                   <div class="tile tile-type-block n-p d-flex flex-column">
-                      <a class="tile-title"><span class="tile-loader tile-label-loader"></span> </a>
                       <div class="tile-bottom-contents">
-                          <div class="dark-block-loader"></div>
-                          <div class="dark-block-loader"></div>
+                        <a class="tile-title"><span class="tile-loader tile-label-loader"></span> </a>
+                        <div class="dark-block-loader"></div>
+                        <div class="dark-block-loader"></div>
                       </div>
                   </div>
               </div>
