@@ -1,12 +1,12 @@
 <div class="col-lg-3 fade-up-blocks-chain" data-selector="chain-block" data-block-number="<%= @block.number %>">
   <div class="tile tile-type-block n-p d-flex flex-column">
-    <%= link(
+    <div class="tile-bottom-contents">
+      <%= link(
           @block,
           class: "tile-title",
           to: block_path(BlockScoutWeb.Endpoint, :show, @block),
           "data-selector": "block-number"
         ) %>
-    <div class="tile-bottom-contents">
       <div class="tile-transactions">
         <div class="mr-2"><%= gettext("%{count} Transactions", count: Enum.count(@block.transactions)) %></div>
         <div class="text-nowrap" data-from-now="<%= @block.timestamp %>"></div>

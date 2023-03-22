@@ -66,12 +66,19 @@
     </div>
 
     <% version = version() %>
-    <div>
-    <%= unless ignore_version?(version) do %>
-      <span><%= gettext("Version") %>: <%= release_link(version) %></span>
-      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-    <% end %>
-      <span><%= render BlockScoutWeb.LayoutView, "_add_chain_to_mm.html" %></span>
+    <div class='footer-etc-wrapper'>
+      <aside>
+        <%= unless ignore_version?(version) do %>
+        <span class='release-version'><%= gettext("Version") %>: <%= release_link(version) %></span>
+          &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        <% end %>
+          <span><%= render BlockScoutWeb.LayoutView, "_add_chain_to_mm.html" %></span>
+        </aside>
+        <div class='terms-wrapper'>
+        <a href="#" rel="noreferrer" target="_blank">Terms of Service</a>
+        <a href="#" rel="noreferrer" target="_blank">Privacy Policy</a>
+      </div>
     </div>
+
   </div>
 </footer>
