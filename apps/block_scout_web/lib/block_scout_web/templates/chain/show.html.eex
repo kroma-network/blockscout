@@ -52,7 +52,7 @@
                 <span class="dashboard-banner-chart-legend-label">
                 <%= gettext "Market Cap" %>
                 </span>
-                <div class="d-flex" style="height: 20px; line-height: 20px;">
+                <div class="d-flex" style="height: 20px; line-height: 20px; display: flex;">
                   <% total_market_cap = market_cap(@market_cap_calculation, @exchange_rate) %>
                   <span style="display: contents;" class="dashboard-banner-chart-legend-value" data-selector="market-cap" data-usd-value="<%= total_market_cap %>">
                   </span>

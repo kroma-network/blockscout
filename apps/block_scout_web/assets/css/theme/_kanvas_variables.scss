@@ -15,8 +15,15 @@ $dashboard-banner-gradient-start: $primary; // gradient begin
 $dashboard-banner-gradient-end: $primary; // gradient end
 $dashboard-banner-network-plain-container-background-color: $primary; // stats bg
 
-main .container {
-  max-width: 1200px !important;
+main {
+  .container {
+    max-width: 1200px !important;
+    padding: 0 !important;
+  }
+
+  .card-chain-transactions > .card-body {
+    padding: 0 !important;
+  }
 }
 
 .layout-container {
@@ -204,6 +211,10 @@ main .container {
 }
 
 // tile
+.card-chain-blocks > .card-body {
+  padding: 0 !important;
+}
+
 .card-chain-blocks .tile.tile-type-block {
   background: linear-gradient(122.05deg, #7afff7 5.21%, #3817ff 36.17%, rgba(66, 255, 142, 0.82) 72.21%, rgba(124, 0, 222, 0.94) 95.29%),
     linear-gradient(0deg, #ffffff, #ffffff);
@@ -343,6 +354,9 @@ $btn-line-color: #000000;
 
     svg {
       margin-right: 12px;
+      width: 24px;
+      height: 24px;
+      padding: 3px;
     }
 
     .main-search-autocomplete {
@@ -397,7 +411,7 @@ $btn-line-color: #000000;
 
       .desktop-menu-wrapper {
         display: flex;
-        margin: 40px 40px 0;
+        margin: 40px 36px 0 41px;
 
         .menu-column {
           .menu-label {
@@ -591,7 +605,11 @@ $footer-background-color: $black;
 $footer-text-color: rgba(#ffffff, 0.4);
 
 footer {
-  padding: 34px 0 84px 0 !important;
+  padding: 33px 0px 38px !important;
+
+  .footer-description {
+    max-width: 335px;
+  }
 
   .footer-link:hover,
   a:hover {
@@ -610,9 +628,8 @@ footer {
   }
 
   .footer-body.container {
-    max-width: 100% !important;
-    padding-left: 32px;
-    padding-right: 32px;
+    padding: 0;
+    max-width: 1200px;
 
     & > div:nth-child(3) {
       font-size: 14px;
@@ -620,16 +637,15 @@ footer {
   }
 
   .fontawesome-icon.github {
-    width: 20px;
-    height: 20px;
-    mask-size: 20px !important;
-    -webkit-mask-size: 20px !important;
+    width: 23px;
+    height: 23px;
+    mask-size: 23px !important;
+    -webkit-mask-size: 23px !important;
   }
 
   .footer-logo {
-    width: 28px;
-    height: 34px;
-    max-height: 34px;
+    width: 31px;
+    height: 36.5px;
   }
 
   .footer-logo-row {
@@ -664,11 +680,11 @@ footer {
       &:before {
         content: '';
         position: absolute;
-        top: 0;
+        top: 3px;
         left: -15px;
         display: inline-block;
-        width: 2px;
-        height: 17px;
+        width: 1px;
+        height: 10px;
         background: rgba(white, 0.4);
       }
     }
@@ -680,6 +696,10 @@ footer {
 }
 
 @media (max-width: 992px) {
+  main .container {
+    padding: 0px 26px;
+  }
+
   .navbar {
     padding: 0 26px 20px 26px !important;
     height: auto;
@@ -783,7 +803,7 @@ footer {
     }
 
     .card-chain-transactions > .card-body {
-      padding-top: 0;
+      padding: 0 26px 0 26px !important;
     }
 
     .card-body {
@@ -855,6 +875,10 @@ footer {
     }
 
     .dashboard-banner-container {
+      .container {
+        padding: 30px 26px 26px 26px !important;
+      }
+
       .dashboard-banner {
         flex-direction: column;
         gap: 32px !important;
@@ -905,7 +929,7 @@ footer {
     }
 
     .card-chain-blocks > .card-body {
-      padding-top: 40px;
+      padding: 40px 26px 0 26px !important;
     }
 
     .card-chain-blocks .tile.tile-type-block {
@@ -1004,7 +1028,6 @@ footer {
     }
 
     .footer-body.container {
-      max-width: 100% !important;
       padding-left: 32px;
       padding-right: 32px;
 
