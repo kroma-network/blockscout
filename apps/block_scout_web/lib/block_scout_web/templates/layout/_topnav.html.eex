@@ -19,7 +19,227 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav">
+
+      <div class="mobile-menu-container">
+        <div class="mobile-menu-wrapper">
+          <div class="label-row">Blocks</div>
+          <div class="menu-row">
+            <div class="menu-link">
+              <%= link(
+                gettext("Blocks"),
+                to: blocks_path(@conn, :index),
+              )%>
+            </div>
+            <div class="menu-link">
+              <%= link(gettext("Reorgs"),
+                to: reorg_path(@conn, :reorg),
+              )%>
+            </div>
+          </div>
+        </div>
+
+        <div class="mobile-menu-wrapper">
+          <div class="label-row">Transactions</div>
+          <div class="menu-row">
+            <div class="menu-link">
+              <%= link(
+                gettext("Validated"),
+                to: transaction_path(@conn, :index),
+              ) %>
+            </div>
+            <div class="menu-link">
+              <%= link(
+                gettext("Pending"),
+                "data-test": "pending_transactions_link",
+                to: pending_transaction_path(@conn, :index)
+              ) %>
+            </div>
+            <div class="menu-link">
+              <%= link(
+                gettext("L1 -> L2"),
+                to: "https://explorer.dev.kanvas-dev.io/transaction/l1-to-l2",
+                target: "_blank"
+              ) %>
+            </div>
+            <div class="menu-link">
+              <%= link(
+                gettext("L2 -> L1"),
+                to: "https://explorer.dev.kanvas-dev.io/transaction/l2-to-l1",
+                target: "_blank"
+              ) %>
+            </div>
+            <div class="menu-link">
+              <%= link(
+                gettext("Rollup"),
+                to: "https://explorer.dev.kanvas-dev.io/transaction/rollup",
+                target: "_blank"
+              ) %>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="mobile-menu-wrapper">
+          <div class="label-row">Tokens</div>
+          <div class="menu-row">
+            <div class="menu-link">
+              <%= link(
+                gettext("All"),
+                to: tokens_path(@conn, :index)
+              ) %>
+            </div>
+            <div class="menu-link">
+              <%= link(
+                Explorer.coin_name(),
+                to: address_path(@conn, :index)
+              ) %>
+            </div>
+          </div>
+        </div>
+
+        <div class="mobile-menu-wrapper">
+          <div class="label-row">APIs</div>
+          <div class="menu-row">
+            <div class="menu-link">
+              <%= link(
+                gettext("GraphQL"),
+                to: api_url() <> "/graphiql"
+              ) %>
+            </div>
+            <div class="menu-link">
+              <%= link(
+                gettext("RPC"),
+                to: api_url() <> api_docs_path(@conn, :index)
+              ) %>
+            </div>
+            <div class="menu-link">
+              <%= link(
+                gettext("ETH RPC"),
+                to: api_url() <> api_docs_path(@conn, :eth_rpc)
+              ) %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="desktop-menu-container">
+        <div class="desktop-menu-wrapper">
+          <div class="menu-column">
+            <div class="menu-label">
+              Blocks&nbsp;<img class="ic-chevron-down" src='/images/icon_chevron_down.png' />
+            </div>
+            <div class="manu-item-wrapper">
+              <div class="menu-item">
+                <%= link(
+                  gettext("Blocks"),
+                  to: blocks_path(@conn, :index),
+                )%>
+              </div>
+              <div class="menu-item">
+                <%= link(gettext("Reorgs"),
+                  to: reorg_path(@conn, :reorg),
+                )%>
+              </div>
+            </div>
+            <div class="desktop-menu-background"></div>
+          </div>
+          <div class="menu-column">
+            <div class="menu-label">
+              Transactions&nbsp;<img class="ic-chevron-down" src='/images/icon_chevron_down.png' />
+            </div>
+            <div class="manu-item-wrapper">
+              <div class="menu-item">
+                <%= link(
+                  gettext("Validated"),
+                  to: transaction_path(@conn, :index),
+                ) %>
+              </div>
+              <div class="menu-item">
+                <%= link(
+                  gettext("Pending"),
+                  "data-test": "pending_transactions_link",
+                  to: pending_transaction_path(@conn, :index)
+                ) %>
+              </div>
+              <div class="menu-item">
+                <%= link(
+                  gettext("L1 -> L2"),
+                  to: "https://explorer.dev.kanvas-dev.io/transaction/l1-to-l2",
+                  target: "_blank"
+                ) %>
+              </div>
+              <div class="menu-item">
+                <%= link(
+                  gettext("L2 -> L1"),
+                  to: "https://explorer.dev.kanvas-dev.io/transaction/l2-to-l1",
+                  target: "_blank"
+                ) %>
+              </div>
+              <div class="menu-item">
+                <%= link(
+                  gettext("Rollup"),
+                  to: "https://explorer.dev.kanvas-dev.io/transaction/rollup",
+                  target: "_blank"
+                ) %>
+              </div>
+            </div>
+            <div class="desktop-menu-background"></div>
+          </div>
+          <div class="menu-column">
+            <div class="menu-label">
+              Tokens&nbsp;<img class="ic-chevron-down" src='/images/icon_chevron_down.png' />
+            </div>
+            <div class="manu-item-wrapper">
+              <div class="menu-item">
+                <%= link(
+                  gettext("All"),
+                  to: tokens_path(@conn, :index)
+                ) %>
+              </div>
+              <div class="menu-item">
+                <%= link(
+                  Explorer.coin_name(),
+                  to: address_path(@conn, :index)
+                ) %>
+              </div>
+            </div>
+            <div class="desktop-menu-background"></div>
+          </div>
+          <div class="menu-column">
+            <div class="menu-label">
+              APIs&nbsp;<img class="ic-chevron-down" src='/images/icon_chevron_down.png' />
+            </div>
+            <div class="manu-item-wrapper">
+              <div class="menu-item">
+                <%= link(
+                  gettext("GraphQL"),
+                  to: api_url() <> "/graphiql"
+                ) %>
+              </div>
+              <div class="menu-item">
+                <%= link(
+                  gettext("RPC"),
+                  to: api_url() <> api_docs_path(@conn, :index)
+                ) %>
+              </div>
+              <div class="menu-item">
+                <%= link(
+                  gettext("ETH RPC"),
+                  to: api_url() <> api_docs_path(@conn, :eth_rpc)
+                ) %>
+              </div>
+            </div>
+            <div class="desktop-menu-background"></div>
+          </div>
+          <div class="menu-column">
+            <div class="menu-label">Kanvas</div>
+          </div>
+        </div>
+      </div>
+      <%= render BlockScoutWeb.LayoutView, "_search.html", conn: @conn, id: "main-search-autocomplete", additional_classes: ["mobile-search-hide"] %>
+
+
+      <ul class="navbar-nav desktop-menu-container" style="display:none;">
         <%= if Application.get_env(:block_scout_web, BlockScoutWeb.WebRouter)[:enabled] do %>
           <li class="nav-item dropdown">
             <a class="nav-link topnav-nav-link dropdown-toggle" href="#" id="navbarBlocksDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -30,13 +250,16 @@
                     gettext("Blocks"),
                     to: blocks_path(@conn, :index),
                     class: "dropdown-item #{tab_status("blocks", @conn.request_path)}")%>
+              <%= link(gettext("Uncles"),
+                    to: uncle_path(@conn, :uncle),
+                    class: "dropdown-item #{tab_status("uncles", @conn.request_path)}")%>
               <%= link(gettext("Forked Blocks (Reorgs)"),
                     to: reorg_path(@conn, :reorg),
                     class: "border-bottom dropdown-item #{tab_status("reorgs", @conn.request_path)}")%>
             </div>
           </li>
           <li class="nav-item dropdown">
-            <a href="#" role="button" id="navbarTransactionsDropdown" class="nav-link topnav-nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a href="#" role="button" id="navbarTokensDropdown" class="nav-link topnav-nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= gettext("Transactions") %>
             </a>
             <div class="dropdown-menu" aria-labeledby="navbarTransactionsDropdown">
@@ -58,16 +281,19 @@
                 <% end %>
                 <%= link(
                     gettext("L1 -> L2"),
-                    to: "https://scanner.dev.kanvas-dev.io/txs-enqueued",
+                    to: "https://explorer.dev.kanvas-dev.io/txs-enqueued",
                     class: "dropdown-item #{tab_status("l1-l2", @conn.request_path)}",
                     target: "_blank"
                   ) %>
                 <%= link(
                     gettext("L2 -> L1"),
-                    to: "https://scanner.dev.kanvas-dev.io/txs-exit",
+                    to: "https://explorer.dev.kanvas-dev.io/txs-exit",
                     class: "border-bottom dropdown-item #{tab_status("l2-l1", @conn.request_path)}",
                     target: "_blank"
                   ) %>
+                <%= link(gettext("Verified contracts"),
+                    to: verified_contracts_path(@conn, :index),
+                    class: "dropdown-item #{tab_status("reorgs", @conn.request_path)}")%>
             </div>
           </li>
           <li class="nav-item dropdown">
@@ -93,7 +319,7 @@
             <a href="#" role="button" id="navbarAPIsDropdown" class="nav-link topnav-nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= gettext("APIs") %>
             </a>
-            <div class="dropdown-menu" aria-labeledby="navbarTransactionsDropdown"> 
+            <div class="dropdown-menu" aria-labeledby="navbarTransactionsDropdown">
               <%= link(
                     gettext("GraphQL"),
                     class: "dropdown-item #{tab_status("graphiql", @conn.request_path)}",
@@ -148,31 +374,32 @@
             </span>
             <%= subnetwork_title() %>
           </a>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> 
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= if Enum.count(main_nets) > 0 do %>
-              <a class="dropdown-item header division">Mainnets</a> 
-              <%= for %{url: url, title: title} <- main_nets do %>  
+              <a class="dropdown-item header division">Mainnets</a>
+              <%= for %{url: url, title: title} <- main_nets do %>
                 <a class="dropdown-item" href="<%= url %>"><%= title %></a>
               <% end %>
             <% end %>
             <%= if Enum.count(test_nets) > 0 do %>
-              <a class="dropdown-item header division">Testnets</a> 
-              <%= for %{url: url, title: title} <- test_nets do %> 
+              <a class="dropdown-item header division">Testnets</a>
+              <%= for %{url: url, title: title} <- test_nets do %>
                 <a class="dropdown-item" href="<%= url %>"><%= title %></a>
               <% end %>
             <% end %>
             <%= if Enum.count(other_nets) > 0 do %>
-              <a class="dropdown-item header division">Other Networks</a> 
-              <%= for %{url: url, title: title} <- other_nets do %>  
+              <a class="dropdown-item header division">Other Networks</a>
+              <%= for %{url: url, title: title} <- other_nets do %>
                 <a class="dropdown-item" href="<%= url %>"><%= title %></a>
-              <% end %> 
+              <% end %>
             <% end %>
           </div>
         </li>
         <!-- Dark mode changer (disable) -->
         <%= render BlockScoutWeb.LayoutView, "_account_menu_item.html", conn: @conn, current_user: @current_user %>
       </ul>
-      <%= render BlockScoutWeb.LayoutView, "_search.html", conn: @conn, id: "main-search-autocomplete", additional_classes: ["mobile-search-hide"] %>
+
+
     </div>
   </div>
   <%= render BlockScoutWeb.LayoutView, "_search.html", conn: @conn, id: "main-search-autocomplete-mobile", additional_classes: ["mobile-search-show"] %>

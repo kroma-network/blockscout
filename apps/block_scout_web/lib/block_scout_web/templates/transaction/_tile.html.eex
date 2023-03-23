@@ -37,7 +37,7 @@
       <% end %>
     </div>
     <!-- Content -->
-    <div class="col-md-7 col-lg-8 d-flex flex-column pr-2 pr-sm-2 pr-md-0">
+    <div class="transation-content col-md-7 col-lg-8 d-flex flex-column pr-2 pr-sm-2 pr-md-0">
       <span>
       <div class="text-truncate d-flex">
         <%= render "_link.html", transaction_hash: @transaction.hash, data_test: "address_hash_link" %>
@@ -51,9 +51,9 @@
         <%= render BlockScoutWeb.AddressView, "_labels.html", tags: tx_tags %>
       </div>
       </span>
-      <span>
+      <span class="from-to-address">
         <%= @transaction |> BlockScoutWeb.AddressView.address_partial_selector(:from, assigns[:current_address]) |> BlockScoutWeb.RenderHelpers.render_partial() %>
-        &rarr;
+        <span>&rarr;</span>
         <%= @transaction |> BlockScoutWeb.AddressView.address_partial_selector(:to, assigns[:current_address]) |> BlockScoutWeb.RenderHelpers.render_partial() %>
       </span>
       <span class="d-flex flex-md-row flex-column mt-3 mt-md-0">

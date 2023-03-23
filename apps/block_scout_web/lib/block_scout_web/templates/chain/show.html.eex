@@ -52,7 +52,7 @@
                 <span class="dashboard-banner-chart-legend-label">
                 <%= gettext "Market Cap" %>
                 </span>
-                <div class="d-flex" style="height: 20px; line-height: 20px;">
+                <div class="d-flex" style="height: 20px; line-height: 20px; display: flex;">
                   <% total_market_cap = market_cap(@market_cap_calculation, @exchange_rate) %>
                   <span style="display: contents;" class="dashboard-banner-chart-legend-value" data-selector="market-cap" data-usd-value="<%= total_market_cap %>">
                   </span>
@@ -150,69 +150,89 @@
 <section class="container">
   <div class="card card-chain-blocks js-ad-dependant-mb-3">
     <div class="card-body">
-      <%= link(gettext("View All Blocks ->"), to: blocks_path(BlockScoutWeb.Endpoint, :index), class: "btn-line float-right") %>
+      <%= link(gettext("View All Blocks ->"), to: blocks_path(BlockScoutWeb.Endpoint, :index), class: "btn-line float-right desktop-only") %>
+      <%= link(gettext("View All ->"), to: blocks_path(BlockScoutWeb.Endpoint, :index), class: "btn-line float-right mobile-only") %>
       <h2 class="card-title"><%= gettext "Blocks" %></h2>
       <div class="row" data-selector="chain-block-list" data-url="<%= chain_blocks_path(@conn, :chain_blocks) %>">
-        <button data-selector="error-message" class="alert alert-danger col-12 text-left" style="display: none;">
-          <span class="alert-link">
-            <%= gettext "Something went wrong, click to reload." %>
-          </span>
-        </button>
-        <div hidden data-selector="loading-message" class="col-lg-3" >
-         <div data-selector="chain-block">
-           <div class="tile tile-type-block n-p d-flex flex-column">
-             <div class="tile-bottom-contents">
-               <a class="tile-title"><span class="tile-loader tile-label-loader"></span> </a>
-               <div class="dark-block-loader"></div>
-               <div class="dark-block-loader"></div>
-             </div>
-           </div>
-         </div>
-        </div>
-        <div hidden data-selector="loading-message" class="col-lg-3" >
-         <div data-selector="chain-block">
-           <div class="tile tile-type-block n-p d-flex flex-column">
-             <div class="tile-bottom-contents">
-               <a class="tile-title"><span class="tile-loader tile-label-loader"></span> </a>
-               <div class="dark-block-loader"></div>
-               <div class="dark-block-loader"></div>
-             </div>
-           </div>
-         </div>
-        </div>
-        <div hidden data-selector="loading-message" class="col-lg-3" >
-         <div data-selector="chain-block">
-           <div class="tile tile-type-block n-p d-flex flex-column">
-             <div class="tile-bottom-contents">
-               <a class="tile-title"><span class="tile-loader tile-label-loader"></span> </a>
-               <div class="dark-block-loader"></div>
-               <div class="dark-block-loader"></div>
-             </div>
-           </div>
-         </div>
-        </div>
-        <div hidden data-selector="loading-message" class="col-lg-3" >
-         <div data-selector="chain-block">
-           <div class="tile tile-type-block n-p d-flex flex-column">
-             <div class="tile-bottom-contents">
-              <a class="tile-title"><span class="tile-loader tile-label-loader"></span> </a>
-              <div class="dark-block-loader"></div>
-              <div class="dark-block-loader"></div>
-            </div>
-           </div>
-         </div>
-        </div>
-          <div hidden data-selector="loading-message" class="col-lg-3" >
-              <div data-selector="chain-block">
-                  <div class="tile tile-type-block n-p d-flex flex-column">
-                      <div class="tile-bottom-contents">
-                        <a class="tile-title"><span class="tile-loader tile-label-loader"></span> </a>
-                        <div class="dark-block-loader"></div>
-                        <div class="dark-block-loader"></div>
-                      </div>
-                  </div>
+      <button data-selector="error-message" class="alert alert-danger col-12 text-left" style="display: none;">
+        <span class="alert-link">
+          <%= gettext "Something went wrong, click to reload." %>
+        </span>
+      </button>
+      <div hidden data-selector="loading-message" class="col-lg-3" >
+        <div data-selector="chain-block">
+          <div class="tile-type-block-wrapper">
+            <div class="tile tile-type-block n-p d-flex flex-column">
+              <div class="tile-bottom-contents-wrapper">
+                <div class="tile-bottom-contents">
+                  <a class="tile-title"><span class="tile-loader tile-label-loader"></span> </a>
+                  <div class="dark-block-loader"></div>
+                  <div class="dark-block-loader"></div>
+                </div>
               </div>
+            </div>
           </div>
+        </div>
+      </div>
+      <div hidden data-selector="loading-message" class="col-lg-3" >
+        <div data-selector="chain-block">
+          <div class="tile-type-block-wrapper">
+            <div class="tile tile-type-block n-p d-flex flex-column">
+              <div class="tile-bottom-contents-wrapper">
+                <div class="tile-bottom-contents">
+                  <a class="tile-title"><span class="tile-loader tile-label-loader"></span> </a>
+                  <div class="dark-block-loader"></div>
+                  <div class="dark-block-loader"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div hidden data-selector="loading-message" class="col-lg-3" >
+        <div data-selector="chain-block">
+          <div class="tile-type-block-wrapper"></div>
+            <div class="tile tile-type-block n-p d-flex flex-column">
+              <div class="tile-bottom-contents-wrapper">
+                <div class="tile-bottom-contents">
+                  <a class="tile-title"><span class="tile-loader tile-label-loader"></span> </a>
+                  <div class="dark-block-loader"></div>
+                  <div class="dark-block-loader"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div hidden data-selector="loading-message" class="col-lg-3" >
+        <div data-selector="chain-block">
+          <div class="tile-type-block-wrapper">
+            <div class="tile tile-type-block n-p d-flex flex-column">
+              <div class="tile-bottom-contents-wrapper">
+                <div class="tile-bottom-contents">
+                  <a class="tile-title"><span class="tile-loader tile-label-loader"></span> </a>
+                  <div class="dark-block-loader"></div>
+                  <div class="dark-block-loader"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div hidden data-selector="loading-message" class="col-lg-3" >
+        <div data-selector="chain-block">
+          <div class="tile-type-block-wrapper">
+            <div class="tile tile-type-block n-p d-flex flex-column">
+              <div class="tile-bottom-contents-wrapper">
+                <div class="tile-bottom-contents">
+                  <a class="tile-title"><span class="tile-loader tile-label-loader"></span> </a>
+                  <div class="dark-block-loader"></div>
+                  <div class="dark-block-loader"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -221,7 +241,8 @@
 
   <div class="card card-chain-transactions">
     <div class="card-body">
-      <%= link(gettext("View All Transactions ->"), to: transaction_path(BlockScoutWeb.Endpoint, :index), class: "btn-line float-right") %>
+      <%= link(gettext("View All Transactions ->"), to: transaction_path(BlockScoutWeb.Endpoint, :index), class: "btn-line float-right desktop-only") %>
+      <%= link(gettext("View All ->"), to: transaction_path(BlockScoutWeb.Endpoint, :index), class: "btn-line float-right mobile-only") %>
       <h2 class="card-title lg-card-title"><%= gettext "Transactions" %></h2>
       <div data-selector="channel-batching-message" style="display: none;">
         <div data-selector="reload-transactions-button" class="alert alert-info">

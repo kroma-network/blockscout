@@ -1,8 +1,5 @@
 $dashboard-banner-gradient-start: $primary !default;
-$dashboard-banner-gradient-end: lighten(
-  $dashboard-banner-gradient-start,
-  5%
-) !default;
+$dashboard-banner-gradient-end: lighten($dashboard-banner-gradient-start, 5%) !default;
 $dashboard-banner-network-plain-container-background-color: lighten($dashboard-banner-gradient-end, 5%) !default;
 $dashboard-line-color-price: lighten($dashboard-banner-gradient-end, 5%) !default;
 $dashboard-line-color-price-dark-theme: lighten($dashboard-banner-gradient-end, 5%) !default;
@@ -27,10 +24,10 @@ $dashboard-banner-chart-axis-font-color-alt: #333;
   position: relative;
   height: 264px;
   @include media-breakpoint-down(sm) {
-      height: auto;
+    height: auto;
   }
   @include media-breakpoint-down(md) {
-      height: auto;
+    height: auto;
   }
 }
 
@@ -54,7 +51,8 @@ $dashboard-banner-chart-axis-font-color-alt: #333;
   padding: 15px 0 0 0;
 
   @include media-breakpoint-up(md) {
-    min-width: 500px;
+    // min-width: 500px;
+    min-width: 380px;
   }
 
   @include media-breakpoint-down(md) {
@@ -66,14 +64,14 @@ $dashboard-banner-chart-axis-font-color-alt: #333;
 
 .dashboard-banner-chart {
   flex-grow: 1;
-  margin: 15px 0 20px 0;
+  margin: 0 0 20px 0;
   position: relative;
-  min-height: 100px;
-  height: calc(100% - 86px);
+  // min-height: 100px;
+  min-height: calc(100% - 86px);
 
   @include media-breakpoint-down(md) {
     flex-grow: 0;
-    margin-top: 20px;
+    // margin-top: 20px;
     margin-bottom: auto;
     max-width: 100%;
   }
@@ -93,7 +91,7 @@ $dashboard-banner-chart-axis-font-color-alt: #333;
   display: grid;
   grid-template-columns: 0.6fr 0.9fr 0.9fr 0.9fr;
   padding-bottom: 12px;
-  padding-left:20px;
+  padding-left: 20px;
 
   @include media-breakpoint-down(sm) {
     grid-template-columns: 1fr 1fr;
@@ -123,7 +121,7 @@ $dashboard-banner-chart-axis-font-color-alt: #333;
 
     &::before {
       border-radius: 2px;
-      content: "";
+      content: '';
       height: 100%;
       left: 0;
       position: absolute;
@@ -145,7 +143,7 @@ $dashboard-banner-chart-axis-font-color-alt: #333;
 
     &.market-cap-per-day {
       &::before {
-        background-color:$dashboard-line-color-market;
+        background-color: $dashboard-line-color-market;
       }
     }
 
@@ -236,7 +234,7 @@ $dashboard-banner-chart-axis-font-color-alt: #333;
   &::after {
     background-color: $dashboard-banner-network-plain-container-background-color;
     bottom: 0;
-    content: "";
+    content: '';
     display: block;
     height: $dashboard-banner-network-plain-container-height;
     left: 0;

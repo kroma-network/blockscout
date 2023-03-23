@@ -1,11 +1,11 @@
-import $ from "jquery";
-import { Chart, LineController, LineElement, PointElement, LinearScale, TimeScale, Title, Tooltip } from "chart.js";
-import "chartjs-adapter-luxon";
-import humps from "humps";
-import numeral from "numeral";
-import { DateTime } from "luxon";
-import { formatUsdValue } from "../lib/currency";
-import sassVariables from "../../css/export-vars-to-js.module.scss";
+import $ from 'jquery';
+import { Chart, LineController, LineElement, PointElement, LinearScale, TimeScale, Title, Tooltip } from 'chart.js';
+import 'chartjs-adapter-luxon';
+import humps from 'humps';
+import numeral from 'numeral';
+import { DateTime } from 'luxon';
+import { formatUsdValue } from '../lib/currency';
+import sassVariables from '../../css/export-vars-to-js.module.scss';
 
 Chart.defaults.font.family = 'Nunito, "Helvetica Neue", Arial, sans-serif,"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"';
 Chart.register(LineController, LineElement, PointElement, LinearScale, TimeScale, Title, Tooltip);
@@ -17,7 +17,7 @@ const grid = {
 };
 
 function getTxChartColor() {
-  if (localStorage.getItem("current-color-mode") === "dark") {
+  if (localStorage.getItem('current-color-mode') === 'dark') {
     return sassVariables.dashboardLineColorTransactionsDarkTheme;
   } else {
     return sassVariables.dashboardLineColorTransactions;
@@ -25,7 +25,7 @@ function getTxChartColor() {
 }
 
 function getPriceChartColor() {
-  if (localStorage.getItem("current-color-mode") === "dark") {
+  if (localStorage.getItem('current-color-mode') === 'dark') {
     return sassVariables.dashboardLineColorPriceDarkTheme;
   } else {
     return sassVariables.dashboardLineColorPrice;
@@ -33,7 +33,7 @@ function getPriceChartColor() {
 }
 
 function getMarketCapChartColor() {
-  if (localStorage.getItem("current-color-mode") === "dark") {
+  if (localStorage.getItem('current-color-mode') === 'dark') {
     return sassVariables.dashboardLineColorMarketDarkTheme;
   } else {
     return sassVariables.dashboardLineColorMarket;
@@ -46,10 +46,10 @@ function xAxe(fontColor) {
       display: false,
     },
     grid,
-    type: "time",
+    type: 'time',
     time: {
-      unit: "day",
-      tooltipFormat: "DD",
+      unit: 'day',
+      tooltipFormat: 'DD',
       stepSize: 14,
     },
     ticks: {
@@ -77,11 +77,11 @@ const legend = {
 };
 
 function formatValue(val) {
-  return `${numeral(val).format("0,0")}`;
+  return `${numeral(val).format('0,0')}`;
 }
 
 const config = {
-  type: "line",
+  type: 'line',
   responsive: true,
   data: {
     datasets: [],
@@ -92,32 +92,32 @@ const config = {
     },
     interaction: {
       intersect: false,
-      mode: "index",
+      mode: 'index',
     },
     scales: {
-      x: xAxe("#5637FB"),
+      x: xAxe(sassVariables.dashboardBannerChartAxisFontColor),
       price: {
-        position: "left",
+        position: 'left',
         grid,
         ticks: {
           beginAtZero: true,
-          callback: (value, _index, _values) => `$${numeral(value).format("0,0.00")}`,
+          callback: (value, _index, _values) => `$${numeral(value).format('0,0.00')}`,
           maxTicksLimit: 4,
           color: sassVariables.dashboardBannerChartAxisFontColor,
         },
       },
       marketCap: {
-        position: "right",
+        position: 'right',
         grid,
         ticks: {
-          callback: (_value, _index, _values) => "",
+          callback: (_value, _index, _values) => '',
           maxTicksLimit: 6,
           drawOnChartArea: false,
           color: sassVariables.dashboardBannerChartAxisFontColor,
         },
       },
       numTransactions: {
-        position: "right",
+        position: 'right',
         grid,
         ticks: {
           beginAtZero: true,
@@ -134,17 +134,17 @@ const config = {
         color: sassVariables.dashboardBannerChartAxisFontColor,
       },
       tooltip: {
-        mode: "index",
+        mode: 'index',
         intersect: false,
         callbacks: {
           label: (context) => {
             const { label } = context.dataset;
             const { formattedValue, parsed } = context;
-            if (context.dataset.yAxisID === "price") {
+            if (context.dataset.yAxisID === 'price') {
               return `${label}: ${formatUsdValue(parsed.y)}`;
-            } else if (context.dataset.yAxisID === "marketCap") {
+            } else if (context.dataset.yAxisID === 'marketCap') {
               return `${label}: ${formatUsdValue(parsed.y)}`;
-            } else if (context.dataset.yAxisID === "numTransactions") {
+            } else if (context.dataset.yAxisID === 'numTransactions') {
               return `${label}: ${formattedValue}`;
             } else {
               return formattedValue;
@@ -167,16 +167,16 @@ function setDataToLocalStorage(key, data) {
 
 function getPriceData(marketHistoryData) {
   if (marketHistoryData.length === 0) {
-    return getDataFromLocalStorage("priceData");
+    return getDataFromLocalStorage('priceData');
   }
   const data = marketHistoryData.map(({ date, closingPrice }) => ({ x: date, y: closingPrice }));
-  setDataToLocalStorage("priceData", data);
+  setDataToLocalStorage('priceData', data);
   return data;
 }
 
 function getTxHistoryData(transactionHistory) {
   if (transactionHistory.length === 0) {
-    return getDataFromLocalStorage("txHistoryData");
+    return getDataFromLocalStorage('txHistoryData');
   }
   const data = transactionHistory.map((dataPoint) => ({ x: dataPoint.date, y: dataPoint.number_of_transactions }));
 
@@ -187,19 +187,19 @@ function getTxHistoryData(transactionHistory) {
   curDay = curDay.toISODate();
   data.unshift({ x: curDay, y: null });
 
-  setDataToLocalStorage("txHistoryData", data);
+  setDataToLocalStorage('txHistoryData', data);
   return data;
 }
 
 function getMarketCapData(marketHistoryData, availableSupply) {
   if (marketHistoryData.length === 0) {
-    return getDataFromLocalStorage("marketCapData");
+    return getDataFromLocalStorage('marketCapData');
   }
   const data = marketHistoryData.map(({ date, closingPrice }) => {
-    const supply = availableSupply !== null && typeof availableSupply === "object" ? availableSupply[date] : availableSupply;
+    const supply = availableSupply !== null && typeof availableSupply === 'object' ? availableSupply[date] : availableSupply;
     return { x: date, y: closingPrice * supply };
   });
-  setDataToLocalStorage("marketCapData", data);
+  setDataToLocalStorage('marketCapData', data);
   return data;
 }
 
@@ -216,33 +216,33 @@ class MarketHistoryChart {
 
     this.price = {
       label: window.localized.Price,
-      yAxisID: "price",
+      yAxisID: 'price',
       data: [],
       fill: false,
-      cubicInterpolationMode: "monotone",
+      cubicInterpolationMode: 'monotone',
       pointRadius: 0,
       backgroundColor: priceLineColor,
       borderColor: priceLineColor,
       // lineTension: 0
     };
-    if (dataConfig.market === undefined || dataConfig.market.indexOf("price") === -1) {
+    if (dataConfig.market === undefined || dataConfig.market.indexOf('price') === -1) {
       this.price.hidden = true;
       axes.price.display = false;
       priceActivated = false;
     }
 
     this.marketCap = {
-      label: window.localized["Market Cap"],
-      yAxisID: "marketCap",
+      label: window.localized['Market Cap'],
+      yAxisID: 'marketCap',
       data: [],
       fill: false,
-      cubicInterpolationMode: "monotone",
+      cubicInterpolationMode: 'monotone',
       pointRadius: 0,
       backgroundColor: mcapLineColor,
       borderColor: mcapLineColor,
       // lineTension: 0
     };
-    if (dataConfig.market === undefined || dataConfig.market.indexOf("market_cap") === -1) {
+    if (dataConfig.market === undefined || dataConfig.market.indexOf('market_cap') === -1) {
       this.marketCap.hidden = true;
       axes.marketCap.display = false;
       this.price.hidden = true;
@@ -251,10 +251,10 @@ class MarketHistoryChart {
     }
 
     this.numTransactions = {
-      label: window.localized["Tx/day"],
-      yAxisID: "numTransactions",
+      label: window.localized['Tx/day'],
+      yAxisID: 'numTransactions',
       data: [],
-      cubicInterpolationMode: "monotone",
+      cubicInterpolationMode: 'monotone',
       fill: false,
       pointRadius: 0,
       backgroundColor: getTxChartColor(),
@@ -262,31 +262,31 @@ class MarketHistoryChart {
       // lineTension: 0
     };
 
-    if (dataConfig.transactions === undefined || dataConfig.transactions.indexOf("transactions_per_day") === -1) {
+    if (dataConfig.transactions === undefined || dataConfig.transactions.indexOf('transactions_per_day') === -1) {
       this.numTransactions.hidden = true;
       axes.numTransactions.display = false;
     } else if (!priceActivated && !marketCapActivated) {
-      axes.numTransactions.position = "left";
+      axes.numTransactions.position = 'left';
     }
 
     this.availableSupply = availableSupply;
 
     // const txChartTitle = 'Daily transactions'
     // const marketChartTitle = 'Daily price and market cap'
-    const txChartTitle = "";
-    const marketChartTitle = "";
-    let chartTitle = "";
-    if (Object.keys(dataConfig).join() === "transactions") {
+    const txChartTitle = '';
+    const marketChartTitle = '';
+    let chartTitle = '';
+    if (Object.keys(dataConfig).join() === 'transactions') {
       chartTitle = txChartTitle;
-    } else if (Object.keys(dataConfig).join() === "market") {
+    } else if (Object.keys(dataConfig).join() === 'market') {
       chartTitle = marketChartTitle;
     }
     config.options.plugins.title.text = chartTitle;
 
     config.data.datasets = [this.price, this.marketCap, this.numTransactions];
 
-    const isChartLoadedKey = "isChartLoaded";
-    const isChartLoaded = window.sessionStorage.getItem(isChartLoadedKey) === "true";
+    const isChartLoadedKey = 'isChartLoaded';
+    const isChartLoaded = window.sessionStorage.getItem(isChartLoadedKey) === 'true';
     if (isChartLoaded) {
       config.options.animation = false;
     } else {
@@ -298,7 +298,7 @@ class MarketHistoryChart {
 
   updateMarketHistory(availableSupply, marketHistoryData) {
     this.price.data = getPriceData(marketHistoryData);
-    if (this.availableSupply !== null && typeof this.availableSupply === "object") {
+    if (this.availableSupply !== null && typeof this.availableSupply === 'object') {
       const today = new Date().toJSON().slice(0, 10);
       this.availableSupply[today] = availableSupply;
       this.marketCap.data = getMarketCapData(marketHistoryData, this.availableSupply);
@@ -315,16 +315,16 @@ class MarketHistoryChart {
 }
 
 export function createMarketHistoryChart(el) {
-  const dataPaths = $(el).data("history_chart_paths");
-  const dataConfig = $(el).data("history_chart_config");
+  const dataPaths = $(el).data('history_chart_paths');
+  const dataConfig = $(el).data('history_chart_config');
 
-  const $chartError = $("[data-chart-error-message]");
+  const $chartError = $('[data-chart-error-message]');
   const chart = new MarketHistoryChart(el, 0, [], dataConfig);
   Object.keys(dataPaths).forEach(function (historySource) {
-    $.getJSON(dataPaths[historySource], { type: "JSON" })
+    $.getJSON(dataPaths[historySource], { type: 'JSON' })
       .done((data) => {
         switch (historySource) {
-          case "market": {
+          case 'market': {
             const availableSupply = JSON.parse(data.supply_data);
             const marketHistoryData = humps.camelizeKeys(JSON.parse(data.history_data));
 
@@ -332,7 +332,7 @@ export function createMarketHistoryChart(el) {
             chart.updateMarketHistory(availableSupply, marketHistoryData);
             break;
           }
-          case "transaction": {
+          case 'transaction': {
             const txsHistoryData = JSON.parse(data.history_data);
 
             $(el).show();
@@ -348,7 +348,7 @@ export function createMarketHistoryChart(el) {
   return chart;
 }
 
-$("[data-chart-error-message]").on("click", (_event) => {
-  $("[data-chart-error-message]").hide();
+$('[data-chart-error-message]').on('click', (_event) => {
+  $('[data-chart-error-message]').hide();
   createMarketHistoryChart($('[data-chart="historyChart"]')[0]);
 });

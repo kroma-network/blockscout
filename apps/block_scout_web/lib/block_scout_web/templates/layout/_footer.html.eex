@@ -1,8 +1,8 @@
 <footer class="footer">
   <div class="footer-body container">
     <!-- Logo -->
-    <div class="row footer-logo-row">
-      <div class="col-md-12">
+    <div class="footer-logo-row">
+      <div class="footer-logo-wrapper">
         <%= link to: webapp_url(@conn), class: "footer-brand" do %>
           <%= if logo_footer() do %>
             <img class="footer-logo" src="<%= static_path(@conn, logo_footer()) %>" alt="<%= subnetwork_title() %>" />
@@ -12,20 +12,50 @@
           <% end %>
         <% end %>
       </div>
+      <div class="footer-icons">
+        <a class="discord" href="https://discord.com/invite/wemixkanvas" target="_blank"></a>
+        <a class="twitter" href="https://twitter.com/WEMIXKanvas" target="_blank"></a>
+        <a class="medium" href="https://medium.com/@wemixkanvas" target="_blank"></a>
+        <a class="docs" href="https://docs.wemixkanvas.io/wemixkanvas" target="_blank"></a>
+      </div>
     </div>
 
     <% other_explorers = other_explorers() %>
     <% col_size = if Enum.empty?(other_explorers), do: 3, else: 2 %>
+    <% version = version() %>
 
-    <div class="row">
-      <div class="col-xs-12 col-lg-3">
-        <p class="footer-info-text"><%= gettext("Blockscout is a tool for inspecting and analyzing EVM based blockchains. Blockchain explorer for Ethereum Networks.") %></p>
+    <div class="footer-link-row">
+      <div class="footer-links">
+        <div class="blockscout-link">Powered by <a href="https://www.blockscout.com" target="_blank">Blockscout</a></div>
+        <%= unless ignore_version?(version) do %>
+          <div class='release-version'><%= gettext("Version") %>: <%= release_link(version) %></div>
+        <% end %>
+        <div><%= render BlockScoutWeb.LayoutView, "_add_chain_to_mm.html" %></div>
+      </div>
+      <div class="footer-policies">
+        <a rel="noreferrer" onclick="handleFooterLinkClick('termsOfService')">Terms of Service</a>
+        <hr />
+        <a rel="noreferrer" onclick="handleFooterLinkClick('privacyPolicy')">Privacy Policy</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom-row">
+      <%= unless ignore_version?(version) do %>
+        <div class='release-version'><%= gettext("Version") %>: <%= release_link(version) %></div>
+      <% end %>
+      <div class="blockscout-link">Powered by <a href="https://www.blockscout.com" target="_blank">Blockscout</a></div>
+    </div>
+    <!--
+    <div>
+      <div class="footer-description">
+        <p><%= gettext("Blockscout is a tool for inspecting and analyzing EVM based blockchains. Blockchain explorer for Ethereum Networks.") %></p>
         <div class="footer-social-icons">
           <a href="<%= Application.get_env(:block_scout_web, :footer)[:github_link] %>" rel="noreferrer" target="_blank" class="footer-social-icon" title='<%= gettext("Github") %>'>
             <div class="footer-social-icon-container fontawesome-icon github"></div>
           </a>
         </div>
       </div>
+
 
       <% main_nets = main_nets(other_networks()) %>
 
@@ -65,20 +95,46 @@
       <% end %>
     </div>
 
-    <% version = version() %>
+
     <div class='footer-etc-wrapper'>
       <aside>
+        <span><%= render BlockScoutWeb.LayoutView, "_add_chain_to_mm.html" %></span>
         <%= unless ignore_version?(version) do %>
-        <span class='release-version'><%= gettext("Version") %>: <%= release_link(version) %></span>
-          &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+          <span class='release-version'><%= gettext("Version") %>: <%= release_link(version) %></span>
         <% end %>
-          <span><%= render BlockScoutWeb.LayoutView, "_add_chain_to_mm.html" %></span>
-        </aside>
-        <div class='terms-wrapper'>
-        <a href="#" rel="noreferrer" target="_blank">Terms of Service</a>
-        <a href="#" rel="noreferrer" target="_blank">Privacy Policy</a>
+      </aside>
+      <div class='terms-wrapper'>
+        <a rel="noreferrer" onclick="handleFooterLinkClick('termsOfService')">Terms of Service</a>
+        <a rel="noreferrer" onclick="handleFooterLinkClick('privacyPolicy')">Privacy Policy</a>
       </div>
     </div>
+    -->
+
+    <script>
+      function handleFooterLinkClick(type) {
+        const isStg = window.location.host.includes('stg');
+
+        if (type === 'termsOfService') {
+          if (isStg) {
+            window.open('https://hub.stg.kanvas-dev.io.io/terms-of-service');
+            return;
+          }
+
+          window.open('https://hub.dev.kanvas-dev.io/terms-of-service');
+          return;
+        }
+
+        if (type === 'privacyPolicy') {
+             if (isStg) {
+            window.open('https://hub.stg.kanvas-dev.io/privacy-policy');
+            return;
+          }
+
+          window.open('https://hub.dev.kanvas-dev.io/privacy-policy');
+          return;
+        }
+      }
+    </script>
 
   </div>
 </footer>
