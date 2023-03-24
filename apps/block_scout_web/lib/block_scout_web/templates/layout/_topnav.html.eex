@@ -57,7 +57,7 @@
             <div class="menu-link">
               <%= link(
                 gettext("L1 -> L2"),
-                to: "https://scanner.dev.kanvas-dev.io/transaction/rollup",
+                to: "https://scanner.dev.kanvas-dev.io/transaction/l1-to-l2",
                 target: "_blank"
               ) %>
             </div>
@@ -71,7 +71,7 @@
             <div class="menu-link">
               <%= link(
                 gettext("Rollup"),
-                to: "https://scanner.dev.kanvas-dev.io/transaction/l1-to-l2",
+                to: "https://scanner.dev.kanvas-dev.io/transaction/rollup",
                 target: "_blank"
               ) %>
             </div>
@@ -164,7 +164,7 @@
               <div class="menu-item">
                 <%= link(
                   gettext("L1 -> L2"),
-                  to: "https://scanner.dev.kanvas-dev.io/transaction/rollup",
+                  to: "https://scanner.dev.kanvas-dev.io/transaction/l1-to-l2",
                   target: "_blank"
                 ) %>
               </div>
@@ -178,7 +178,7 @@
               <div class="menu-item">
                 <%= link(
                   gettext("Rollup"),
-                  to: "https://scanner.dev.kanvas-dev.io/transaction/l1-to-l2",
+                  to: "https://scanner.dev.kanvas-dev.io/transaction/rollup",
                   target: "_blank"
                 ) %>
               </div>

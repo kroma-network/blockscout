@@ -73,12 +73,38 @@
           &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
         <% end %>
           <span><%= render BlockScoutWeb.LayoutView, "_add_chain_to_mm.html" %></span>
-        </aside>
-        <div class='terms-wrapper'>
-        <a href="#" rel="noreferrer" target="_blank">Terms of Service</a>
-        <a href="#" rel="noreferrer" target="_blank">Privacy Policy</a>
+      </aside>
+      <div class='terms-wrapper'>
+        <a rel="noreferrer" onclick="handleFooterLinkClick('termsOfService')">Terms of Service</a>
+        <a rel="noreferrer" onclick="handleFooterLinkClick('privacyPolicy')">Privacy Policy</a>
       </div>
     </div>
+
+    <script>
+      function handleFooterLinkClick(type) {
+        const isStg = window.location.host.includes('stg');
+
+        if (type === 'termsOfService') {
+          if (isStg) {
+            window.open('https://hub.stg.kanvas-dev.io.io/terms-of-service');
+            return;
+          }
+
+          window.open('https://hub.dev.kanvas-dev.io/terms-of-service');
+          return;
+        }
+
+        if (type === 'privacyPolicy') {
+             if (isStg) {
+            window.open('https://hub.stg.kanvas-dev.io/privacy-policy');
+            return;
+          }
+
+          window.open('https://hub.dev.kanvas-dev.io/privacy-policy');
+          return;
+        }
+      }
+    </script>
 
   </div>
 </footer>
