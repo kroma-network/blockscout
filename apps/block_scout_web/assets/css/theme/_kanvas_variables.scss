@@ -16,6 +16,14 @@ $dashboard-banner-gradient-end: $primary; // gradient end
 $dashboard-banner-network-plain-container-background-color: $primary; // stats bg
 
 main {
+  .desktop-only {
+    display: inherit;
+  }
+
+  .mobile-only {
+    display: none;
+  }
+
   .tile.tile-type-transaction {
     .from-to-address {
       display: flex;
@@ -639,7 +647,19 @@ footer {
 }
 
 @media (max-width: 991px) {
+  .card-body .col-lg-3 {
+    max-width: none;
+  }
+
   main {
+    .desktop-only {
+      display: none;
+    }
+
+    .mobile-only {
+      display: inherit;
+    }
+
     section.container {
       padding: 0;
     }
