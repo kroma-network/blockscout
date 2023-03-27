@@ -588,7 +588,7 @@ footer {
   }
 
   .footer-social-icons {
-    margin-bottom: 44px;
+    margin-bottom: 40px;
   }
 
   .footer-social-icon-container {
@@ -615,16 +615,16 @@ footer {
         content: '';
         position: absolute;
         top: 3px;
-        left: -15px;
+        left: -12px;
         display: inline-block;
         width: 1px;
         height: 10px;
-        background: rgba(white, 0.4);
+        background: rgba(white, 0.2);
       }
     }
 
     a + a {
-      margin-left: 25px;
+      margin-left: 20px;
     }
   }
 }
@@ -1106,6 +1106,8 @@ footer {
   }
 
   footer {
+    padding: 33px 0px 83px !important;
+
     .row .footer-info-text {
       min-width: auto;
       font-size: 12px;
@@ -1137,10 +1139,16 @@ footer {
     .footer-etc-wrapper {
       display: block;
       gap: 0px;
+
+      aside {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
     }
 
     .terms-wrapper {
-      margin-top: 22px;
+      margin-top: 20px;
 
       a {
         font-size: 13px;

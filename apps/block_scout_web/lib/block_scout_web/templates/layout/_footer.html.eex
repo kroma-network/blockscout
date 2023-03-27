@@ -68,11 +68,10 @@
     <% version = version() %>
     <div class='footer-etc-wrapper'>
       <aside>
+        <span><%= render BlockScoutWeb.LayoutView, "_add_chain_to_mm.html" %></span>
         <%= unless ignore_version?(version) do %>
-        <span class='release-version'><%= gettext("Version") %>: <%= release_link(version) %></span>
-          &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+          <span class='release-version'><%= gettext("Version") %>: <%= release_link(version) %></span>
         <% end %>
-          <span><%= render BlockScoutWeb.LayoutView, "_add_chain_to_mm.html" %></span>
       </aside>
       <div class='terms-wrapper'>
         <a rel="noreferrer" onclick="handleFooterLinkClick('termsOfService')">Terms of Service</a>
