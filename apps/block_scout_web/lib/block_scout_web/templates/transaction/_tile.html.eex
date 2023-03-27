@@ -51,7 +51,7 @@
         <%= render BlockScoutWeb.AddressView, "_labels.html", tags: tx_tags %>
       </div>
       </span>
-      <span>
+      <span class="from-to-address">
         <%= @transaction |> BlockScoutWeb.AddressView.address_partial_selector(:from, assigns[:current_address]) |> BlockScoutWeb.RenderHelpers.render_partial() %>
         &rarr;
         <%= @transaction |> BlockScoutWeb.AddressView.address_partial_selector(:to, assigns[:current_address]) |> BlockScoutWeb.RenderHelpers.render_partial() %>
