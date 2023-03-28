@@ -24,13 +24,6 @@ main {
     display: none;
   }
 
-  div[data-selector='chain-block-list'] {
-    & > div {
-      border-radius: 15px;
-      overflow: hidden;
-    }
-  }
-
   .tile.tile-type-transaction {
     .from-to-address {
       display: flex;
@@ -70,6 +63,11 @@ main {
   .card-chain-transactions > .card-body {
     padding: 0 !important;
   }
+}
+
+.tile-type-block-wrapper {
+  border-radius: 15px;
+  overflow: hidden;
 }
 
 .tile .tile-bottom-contents-wrapper {
