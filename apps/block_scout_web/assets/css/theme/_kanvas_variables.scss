@@ -72,15 +72,21 @@ main {
   }
 }
 
-.tile .tile-bottom-contents {
-  position: relative;
+.tile .tile-bottom-contents-wrapper {
   padding: 20px;
+}
+
+.tile .tile-bottom-contents {
+  background-color: white !important;
+  position: relative;
   aspect-ratio: 1;
+  padding: 0px;
+  overflow: hidden;
 
   .text-truncate {
     position: absolute;
     bottom: 20px;
-    left: 20px;
+    // left: 20px;
     max-width: 80%;
   }
 
@@ -614,6 +620,12 @@ footer {
   .footer-etc-wrapper {
     display: flex;
     gap: 30px;
+
+    aside {
+      display: flex;
+      flex-direction: row-reverse;
+      gap: 40px;
+    }
   }
 
   .terms-wrapper {

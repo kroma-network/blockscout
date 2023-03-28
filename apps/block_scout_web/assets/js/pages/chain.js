@@ -1,17 +1,17 @@
-import $ from "jquery";
-import omit from "lodash.omit";
-import first from "lodash.first";
-import rangeRight from "lodash.rangeright";
-import find from "lodash.find";
-import map from "lodash.map";
-import humps from "humps";
-import numeral from "numeral";
-import socket from "../socket";
-import { updateAllCalculatedUsdValues, formatUsdValue } from "../lib/currency";
-import { createStore, connectElements } from "../lib/redux_helpers.js";
-import { batchChannel, showLoader } from "../lib/utils";
-import listMorph from "../lib/list_morph";
-import "../app";
+import $ from 'jquery';
+import omit from 'lodash.omit';
+import first from 'lodash.first';
+import rangeRight from 'lodash.rangeright';
+import find from 'lodash.find';
+import map from 'lodash.map';
+import humps from 'humps';
+import numeral from 'numeral';
+import socket from '../socket';
+import { updateAllCalculatedUsdValues, formatUsdValue } from '../lib/currency';
+import { createStore, connectElements } from '../lib/redux_helpers.js';
+import { batchChannel, showLoader } from '../lib/utils';
+import listMorph from '../lib/list_morph';
+import '../app';
 
 const BATCH_THRESHOLD = 6;
 const BLOCKS_PER_PAGE = 4;
@@ -38,21 +38,21 @@ export const reducer = withMissingBlocks(baseReducer);
 
 function baseReducer(state = initialState, action) {
   switch (action.type) {
-    case "ELEMENTS_LOAD": {
-      return Object.assign({}, state, omit(action, "type"));
+    case 'ELEMENTS_LOAD': {
+      return Object.assign({}, state, omit(action, 'type'));
     }
-    case "RECEIVED_NEW_ADDRESS_COUNT": {
+    case 'RECEIVED_NEW_ADDRESS_COUNT': {
       return Object.assign({}, state, {
         addressCount: action.msg.count,
       });
     }
-    case "RECEIVED_NEW_BLOCK": {
+    case 'RECEIVED_NEW_BLOCK': {
       if (!state.blocks.length || state.blocks[0].blockNumber < action.msg.blockNumber) {
         let pastBlocks;
         if (state.blocks.length < BLOCKS_PER_PAGE) {
           pastBlocks = state.blocks;
         } else {
-          $(".miner-address-tooltip").tooltip("hide");
+          $('.miner-address-tooltip').tooltip('hide');
           pastBlocks = state.blocks.slice(0, -1);
         }
         return Object.assign({}, state, {
@@ -67,26 +67,26 @@ function baseReducer(state = initialState, action) {
         });
       }
     }
-    case "START_BLOCKS_FETCH": {
+    case 'START_BLOCKS_FETCH': {
       return Object.assign({}, state, { blocksError: false, blocksLoading: true });
     }
-    case "BLOCKS_FINISH_REQUEST": {
+    case 'BLOCKS_FINISH_REQUEST': {
       return Object.assign({}, state, { blocksLoading: false });
     }
-    case "BLOCKS_FETCHED": {
+    case 'BLOCKS_FETCHED': {
       return Object.assign({}, state, { blocks: [...action.msg.blocks], blocksLoading: false });
     }
-    case "BLOCKS_REQUEST_ERROR": {
+    case 'BLOCKS_REQUEST_ERROR': {
       return Object.assign({}, state, { blocksError: true, blocksLoading: false });
     }
-    case "RECEIVED_NEW_EXCHANGE_RATE": {
+    case 'RECEIVED_NEW_EXCHANGE_RATE': {
       return Object.assign({}, state, {
         availableSupply: action.msg.exchangeRate.availableSupply,
         marketHistoryData: action.msg.marketHistoryData,
         usdMarketCap: action.msg.exchangeRate.marketCapUsd,
       });
     }
-    case "RECEIVED_NEW_TRANSACTION_BATCH": {
+    case 'RECEIVED_NEW_TRANSACTION_BATCH': {
       if (state.channelDisconnected) return state;
 
       const transactionCount = state.transactionCount + action.msgs.length;
@@ -113,23 +113,23 @@ function baseReducer(state = initialState, action) {
         });
       }
     }
-    case "TRANSACTION_BATCH_EXPANDED": {
+    case 'TRANSACTION_BATCH_EXPANDED': {
       return Object.assign({}, state, {
         transactionsBatch: [],
       });
     }
-    case "RECEIVED_UPDATED_TRANSACTION_STATS": {
+    case 'RECEIVED_UPDATED_TRANSACTION_STATS': {
       return Object.assign({}, state, {
         transactionStats: action.msg.stats,
       });
     }
-    case "START_TRANSACTIONS_FETCH":
+    case 'START_TRANSACTIONS_FETCH':
       return Object.assign({}, state, { transactionsError: false, transactionsLoading: true });
-    case "TRANSACTIONS_FETCHED":
+    case 'TRANSACTIONS_FETCHED':
       return Object.assign({}, state, { transactions: [...action.msg.transactions] });
-    case "TRANSACTIONS_FETCH_ERROR":
+    case 'TRANSACTIONS_FETCH_ERROR':
       return Object.assign({}, state, { transactionsError: true });
-    case "FINISH_TRANSACTIONS_FETCH":
+    case 'FINISH_TRANSACTIONS_FETCH':
       return Object.assign({}, state, { transactionsLoading: false });
     default:
       return state;
@@ -148,7 +148,7 @@ function withMissingBlocks(reducer) {
     return Object.assign({}, result, {
       blocks: rangeRight(minBlock, maxBlock + 1).map(
         (blockNumber) =>
-          find(result.blocks, ["blockNumber", blockNumber]) || {
+          find(result.blocks, ['blockNumber', blockNumber]) || {
             blockNumber,
             chainBlockHtml: placeHolderBlock(blockNumber),
           }
@@ -226,7 +226,7 @@ const elements = {
   '[data-selector="tx_per_day"]': {
     render($el, state, oldState) {
       if (!(JSON.stringify(oldState.transactionStats) === JSON.stringify(state.transactionStats))) {
-        $el.empty().append(numeral(state.transactionStats[0].number_of_transactions).format("0,0"));
+        $el.empty().append(numeral(state.transactionStats[0].number_of_transactions).format('0,0'));
       }
     },
   },
@@ -243,7 +243,7 @@ const elements = {
 
       if (state.blocksLoading === false) {
         const blocks = map(state.blocks, ({ chainBlockHtml }) => $(chainBlockHtml)[0]);
-        listMorph(container, blocks, { key: "dataset.blockNumber", horizontal: true });
+        listMorph(container, blocks, { key: 'dataset.blockNumber', horizontal: true });
       }
     },
   },
@@ -279,7 +279,7 @@ const elements = {
       if (oldState.transactions === state.transactions) return;
       const container = $el[0];
       const newElements = map(state.transactions, ({ transactionHtml }) => $(transactionHtml)[0]);
-      listMorph(container, newElements, { key: "dataset.identifierHash" });
+      listMorph(container, newElements, { key: 'dataset.identifierHash' });
     },
   },
   '[data-selector="channel-batching-count"]': {
@@ -303,78 +303,78 @@ if ($chainDetailsPage.length) {
   loadBlocks(store);
   bindBlockErrorMessage(store);
 
-  const exchangeRateChannel = socket.channel("exchange_rate:new_rate");
+  const exchangeRateChannel = socket.channel('exchange_rate:new_rate');
   exchangeRateChannel.join();
-  exchangeRateChannel.on("new_rate", (msg) => {
+  exchangeRateChannel.on('new_rate', (msg) => {
     updateAllCalculatedUsdValues(humps.camelizeKeys(msg).exchangeRate.usdValue);
     store.dispatch({
-      type: "RECEIVED_NEW_EXCHANGE_RATE",
+      type: 'RECEIVED_NEW_EXCHANGE_RATE',
       msg: humps.camelizeKeys(msg),
     });
   });
 
-  const addressesChannel = socket.channel("addresses:new_address");
+  const addressesChannel = socket.channel('addresses:new_address');
   addressesChannel.join();
-  addressesChannel.on("count", (msg) =>
+  addressesChannel.on('count', (msg) =>
     store.dispatch({
-      type: "RECEIVED_NEW_ADDRESS_COUNT",
+      type: 'RECEIVED_NEW_ADDRESS_COUNT',
       msg: humps.camelizeKeys(msg),
     })
   );
 
-  const blocksChannel = socket.channel("blocks:new_block");
+  const blocksChannel = socket.channel('blocks:new_block');
   blocksChannel.join();
-  blocksChannel.on("new_block", (msg) =>
+  blocksChannel.on('new_block', (msg) =>
     store.dispatch({
-      type: "RECEIVED_NEW_BLOCK",
+      type: 'RECEIVED_NEW_BLOCK',
       msg: humps.camelizeKeys(msg),
     })
   );
 
-  const transactionsChannel = socket.channel("transactions:new_transaction");
+  const transactionsChannel = socket.channel('transactions:new_transaction');
   transactionsChannel.join();
   transactionsChannel.on(
-    "transaction",
+    'transaction',
     batchChannel((msgs) =>
       store.dispatch({
-        type: "RECEIVED_NEW_TRANSACTION_BATCH",
+        type: 'RECEIVED_NEW_TRANSACTION_BATCH',
         msgs: humps.camelizeKeys(msgs),
       })
     )
   );
 
-  const transactionStatsChannel = socket.channel("transactions:stats");
+  const transactionStatsChannel = socket.channel('transactions:stats');
   transactionStatsChannel.join();
-  transactionStatsChannel.on("update", (msg) =>
+  transactionStatsChannel.on('update', (msg) =>
     store.dispatch({
-      type: "RECEIVED_UPDATED_TRANSACTION_STATS",
+      type: 'RECEIVED_UPDATED_TRANSACTION_STATS',
       msg,
     })
   );
 
   const $txReloadButton = $('[data-selector="reload-transactions-button"]');
   const $channelBatching = $('[data-selector="channel-batching-message"]');
-  $txReloadButton.on("click", (event) => {
+  $txReloadButton.on('click', (event) => {
     event.preventDefault();
     loadTransactions(store);
     $channelBatching.hide();
     store.dispatch({
-      type: "TRANSACTION_BATCH_EXPANDED",
+      type: 'TRANSACTION_BATCH_EXPANDED',
     });
   });
 }
 
 function loadTransactions(store) {
   const path = store.getState().transactionsPath;
-  store.dispatch({ type: "START_TRANSACTIONS_FETCH" });
+  store.dispatch({ type: 'START_TRANSACTIONS_FETCH' });
   $.getJSON(path)
-    .done((response) => store.dispatch({ type: "TRANSACTIONS_FETCHED", msg: humps.camelizeKeys(response) }))
-    .fail(() => store.dispatch({ type: "TRANSACTIONS_FETCH_ERROR" }))
-    .always(() => store.dispatch({ type: "FINISH_TRANSACTIONS_FETCH" }));
+    .done((response) => store.dispatch({ type: 'TRANSACTIONS_FETCHED', msg: humps.camelizeKeys(response) }))
+    .fail(() => store.dispatch({ type: 'TRANSACTIONS_FETCH_ERROR' }))
+    .always(() => store.dispatch({ type: 'FINISH_TRANSACTIONS_FETCH' }));
 }
 
 function bindTransactionErrorMessage(store) {
-  $('[data-selector="transactions-list"] [data-selector="error-message"]').on("click", (_event) => loadTransactions(store));
+  $('[data-selector="transactions-list"] [data-selector="error-message"]').on('click', (_event) => loadTransactions(store));
 }
 
 export function placeHolderBlock(blockNumber) {
@@ -384,12 +384,14 @@ export function placeHolderBlock(blockNumber) {
       data-block-number="${blockNumber}"
       data-selector="place-holder"
     >
-    <div class="tile tile-type-block n-p d-flex flex-column">
-    <div class="tile-bottom-contents" style="height: 100%">
-          <div class="tile-title">${blockNumber}</div>
-          <div class="tile-transactions">
-            <div class="mr-2">${window.localized["Block Processing Prefix"]}</div>
-            <div>${window.localized["Block Processing Postfix"]}</div>
+      <div class="tile tile-type-block n-p d-flex flex-column">
+        <div class="tile-bottom-contents-wrapper">
+          <div class="tile-bottom-contents" style="height: 100%">
+            <div class="tile-title">${blockNumber}</div>
+            <div class="tile-transactions">
+              <div class="mr-2">${window.localized['Block Processing Prefix']}</div>
+              <div>${window.localized['Block Processing Postfix']}</div>
+            </div>
           </div>
         </div>
       </div>
@@ -400,16 +402,16 @@ export function placeHolderBlock(blockNumber) {
 function loadBlocks(store) {
   const url = store.getState().blocksPath;
 
-  store.dispatch({ type: "START_BLOCKS_FETCH" });
+  store.dispatch({ type: 'START_BLOCKS_FETCH' });
 
   $.getJSON(url)
     .done((response) => {
-      store.dispatch({ type: "BLOCKS_FETCHED", msg: humps.camelizeKeys(response) });
+      store.dispatch({ type: 'BLOCKS_FETCHED', msg: humps.camelizeKeys(response) });
     })
-    .fail(() => store.dispatch({ type: "BLOCKS_REQUEST_ERROR" }))
-    .always(() => store.dispatch({ type: "BLOCKS_FINISH_REQUEST" }));
+    .fail(() => store.dispatch({ type: 'BLOCKS_REQUEST_ERROR' }))
+    .always(() => store.dispatch({ type: 'BLOCKS_FINISH_REQUEST' }));
 }
 
 function bindBlockErrorMessage(store) {
-  $('[data-selector="chain-block-list"] [data-selector="error-message"]').on("click", (_event) => loadBlocks(store));
+  $('[data-selector="chain-block-list"] [data-selector="error-message"]').on('click', (_event) => loadBlocks(store));
 }
