@@ -671,6 +671,14 @@ footer {
 }
 
 @media (max-width: 991px) {
+  .footer-description {
+    p {
+      font-weight: 500;
+      font-size: 12px !important;
+      line-height: 20px;
+    }
+  }
+
   .card-body .col-lg-3 {
     max-width: none;
   }
@@ -1169,6 +1177,16 @@ footer {
         display: flex;
         flex-direction: column;
         gap: 20px;
+
+        a {
+          font-size: 13px;
+        }
+
+        .release-version {
+          a {
+            font-size: 14px;
+          }
+        }
       }
     }
 
@@ -1216,6 +1234,24 @@ footer {
         max-width: 100%;
         max-height: 100%;
         padding: 0 !important;
+      }
+    }
+  }
+}
+
+@media (max-width: 370px) {
+  main {
+    div[data-selector='chain-block-list'] {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-gap: 10px;
+      margin: 0 !important;
+    }
+
+    .dashboard-banner-container {
+      .dashboard-banner-network-stats-item {
+        padding: 16px 0;
+        padding-left: 5px;
       }
     }
   }
