@@ -24,6 +24,13 @@ main {
     display: none;
   }
 
+  div[data-selector='chain-block-list'] {
+    & > div {
+      border-radius: 15px;
+      overflow: hidden;
+    }
+  }
+
   .tile.tile-type-transaction {
     .from-to-address {
       display: flex;
@@ -286,8 +293,15 @@ $tile-type-transaction-color: white;
 $tile-body-a-color: #5637fb;
 $tile-title-color: $black;
 $text-muted: #8f8f8f;
+
+.tile.tile-type-contract-creation,
+.tile.tile-type-contract-call,
 .tile.tile-type-transaction {
   border-left: 1px solid $border-color !important;
+
+  .tile-label {
+    color: white !important;
+  }
 
   .tile-body .tile-transaction-type-block {
     background-color: unset;
