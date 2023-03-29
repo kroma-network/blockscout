@@ -974,6 +974,10 @@ footer {
         overflow-y: auto;
         height: calc(100vh - 130px);
         justify-content: flex-start;
+
+        @supports (height: calc(100dvh - 130px)) {
+          height: calc(100dvh - 130px);
+        }
       }
 
       .desktop-menu-container {
