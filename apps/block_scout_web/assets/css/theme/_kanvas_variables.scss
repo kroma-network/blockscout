@@ -15,6 +15,10 @@ $dashboard-banner-gradient-start: $primary; // gradient begin
 $dashboard-banner-gradient-end: $primary; // gradient end
 $dashboard-banner-network-plain-container-background-color: $primary; // stats bg
 
+html {
+  text-size-adjust: auto !important;
+}
+
 main {
   .desktop-only {
     display: inherit;
