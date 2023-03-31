@@ -35,6 +35,10 @@ defmodule BlockScoutWeb.LayoutView do
 
   alias BlockScoutWeb.SocialMedia
 
+  def kanvas_scanner_url() do
+    Keyword.get(application_config(), :kanvas_scanner_url)
+  end
+
   def logo do
     Keyword.get(application_config(), :logo)
   end

@@ -57,21 +57,21 @@
             <div class="menu-link">
               <%= link(
                 gettext("L1 -> L2"),
-                to: "https://explorer.dev.kanvas-dev.io/transaction/l1-to-l2",
+                to: "#{kanvas_scanner_url()}/transaction/l1-to-l2",
                 target: "_blank"
               ) %>
             </div>
             <div class="menu-link">
               <%= link(
                 gettext("L2 -> L1"),
-                to: "https://explorer.dev.kanvas-dev.io/transaction/l2-to-l1",
+                to: "#{kanvas_scanner_url()}/transaction/l2-to-l1",
                 target: "_blank"
               ) %>
             </div>
             <div class="menu-link">
               <%= link(
                 gettext("Rollup"),
-                to: "https://explorer.dev.kanvas-dev.io/transaction/rollup",
+                to: "#{kanvas_scanner_url()}/transaction/rollup",
                 target: "_blank"
               ) %>
             </div>
@@ -164,21 +164,21 @@
               <div class="menu-item">
                 <%= link(
                   gettext("L1 -> L2"),
-                  to: "https://explorer.dev.kanvas-dev.io/transaction/l1-to-l2",
+                  to: "#{kanvas_scanner_url()}/transaction/l1-to-l2",
                   target: "_blank"
                 ) %>
               </div>
               <div class="menu-item">
                 <%= link(
                   gettext("L2 -> L1"),
-                  to: "https://explorer.dev.kanvas-dev.io/transaction/l2-to-l1",
+                  to: "#{kanvas_scanner_url()}/transaction/l2-to-l1",
                   target: "_blank"
                 ) %>
               </div>
               <div class="menu-item">
                 <%= link(
                   gettext("Rollup"),
-                  to: "https://explorer.dev.kanvas-dev.io/transaction/rollup",
+                  to: "#{kanvas_scanner_url()}/transaction/rollup",
                   target: "_blank"
                 ) %>
               </div>

@@ -67,7 +67,8 @@ config :block_scout_web, BlockScoutWeb.Chain,
   has_emission_funds: false,
   show_maintenance_alert: System.get_env("SHOW_MAINTENANCE_ALERT", "false") == "true",
   enable_testnet_label: System.get_env("SHOW_TESTNET_LABEL", "false") == "true",
-  testnet_label_text: System.get_env("TESTNET_LABEL_TEXT", "Testnet")
+  testnet_label_text: System.get_env("TESTNET_LABEL_TEXT", "Testnet"),
+  kanvas_scanner_url: System.get_env("KANVAS_SCANNER_URL")
 
 verification_max_libraries_default = 10
 
