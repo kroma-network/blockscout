@@ -112,11 +112,11 @@
 
     <script>
       function handleFooterLinkClick(type) {
-        const isStg = window.location.host.includes('stg');
+        const isProd = window.location.host.includes('aqua');
 
         if (type === 'termsOfService') {
-          if (isStg) {
-            window.open('https://hub.stg.kanvas-dev.io.io/terms-of-service');
+          if (isProd) {
+            window.open('https://wemixkanvas.io/terms-of-service');
             return;
           }
 
@@ -125,8 +125,8 @@
         }
 
         if (type === 'privacyPolicy') {
-             if (isStg) {
-            window.open('https://hub.stg.kanvas-dev.io/privacy-policy');
+             if (isProd) {
+            window.open('https://wemixkanvas.io/privacy-policy');
             return;
           }
 
