@@ -308,6 +308,20 @@ main {
   }
 }
 
+.menu-label.network {
+  color: rgb(86, 55, 251) !important;
+  opacity: unset !important;
+  &:before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 6px;
+    background-color: rgb(86, 55, 251);
+  }
+}
+
 $tile-type-transaction-color: white;
 $tile-body-a-color: #5637fb;
 $tile-title-color: $black;

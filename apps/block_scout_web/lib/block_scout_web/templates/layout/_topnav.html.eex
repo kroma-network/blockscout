@@ -232,7 +232,7 @@
             <div class="desktop-menu-background"></div>
           </div>
           <div class="menu-column">
-            <div class="menu-label">Kanvas</div>
+            <div class="menu-label network"><%= "#{network_title()} #{subnetwork_title()}" %></div>
           </div>
         </div>
       </div>
