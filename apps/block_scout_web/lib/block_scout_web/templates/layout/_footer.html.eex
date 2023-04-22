@@ -13,10 +13,10 @@
         <% end %>
       </div>
       <div class="footer-icons">
-        <a class="discord" href="https://discord.com/invite/wemixkanvas" target="_blank"></a>
-        <a class="twitter" href="https://twitter.com/WEMIXKanvas" target="_blank"></a>
-        <a class="medium" href="https://medium.com/@wemixkanvas" target="_blank"></a>
-        <a class="docs" href="https://docs.wemixkanvas.io/wemixkanvas" target="_blank"></a>
+        <a class="discord" href="https://discord.com/invite/kroma" target="_blank" rel="noopener noreferrer"></a>
+        <a class="twitter" href="https://twitter.com/kroma_network" target="_blank" rel="noopener noreferrer"></a>
+        <a class="medium" href="https://medium.com/@kroma-newtork" target="_blank" rel="noopener noreferrer"></a>
+        <a class="docs" href="https://docs.kroma.network" target="_blank" rel="noopener noreferrer"></a>
       </div>
     </div>
 
@@ -116,7 +116,7 @@
 
         if (type === 'termsOfService') {
           if (isProd) {
-            window.open('https://wemixkanvas.io/terms-of-service');
+            window.open('https://kroma.network/terms-of-service');
             return;
           }
 
@@ -126,7 +126,7 @@
 
         if (type === 'privacyPolicy') {
              if (isProd) {
-            window.open('https://wemixkanvas.io/privacy-policy');
+            window.open('https://kroma.network/privacy-policy');
             return;
           }
 
