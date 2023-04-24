@@ -120,7 +120,7 @@
             return;
           }
 
-          window.open('https://hub.dev.kanvas-dev.io/terms-of-service');
+          window.open('https://hub.dev.kroma.cc/terms-of-service');
           return;
         }
 
@@ -130,7 +130,7 @@
             return;
           }
 
-          window.open('https://hub.dev.kanvas-dev.io/privacy-policy');
+          window.open('https://hub.dev.kroma.cc/privacy-policy');
           return;
         }
       }

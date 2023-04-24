@@ -90,7 +90,7 @@
             </div>
             <div class="menu-link">
               <%= link(
-                Explorer.coin_name(),
+                gettext("ETH"),
                 to: address_path(@conn, :index)
               ) %>
             </div>
@@ -198,7 +198,7 @@
               </div>
               <div class="menu-item">
                 <%= link(
-                  Explorer.coin_name(),
+                  gettext("ETH"),
                   to: address_path(@conn, :index)
                 ) %>
               </div>
@@ -281,13 +281,13 @@
                 <% end %>
                 <%= link(
                     gettext("L1 -> L2"),
-                    to: "https://explorer.dev.kanvas-dev.io/txs-enqueued",
+                    to: "#{kanvas_scanner_url()}/transaction/l1-to-l2",
                     class: "dropdown-item #{tab_status("l1-l2", @conn.request_path)}",
                     target: "_blank"
                   ) %>
                 <%= link(
                     gettext("L2 -> L1"),
-                    to: "https://explorer.dev.kanvas-dev.io/txs-exit",
+                    to: "#{kanvas_scanner_url()}/transaction/l2-to-l1",
                     class: "border-bottom dropdown-item #{tab_status("l2-l1", @conn.request_path)}",
                     target: "_blank"
                   ) %>
@@ -307,7 +307,7 @@
                     to: tokens_path(@conn, :index)
                   ) %>
               <%= link(
-                    Explorer.coin_name(),
+                    gettext("ETH"),
                     class: "dropdown-item #{tab_status("accounts", @conn.request_path)}",
                     to: address_path(@conn, :index)
                   ) %>
