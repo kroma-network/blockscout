@@ -49,7 +49,7 @@
 
     <script>
       function handleFooterLinkClick(type) {
-        const isProd = window.location.host.includes('aqua');
+        const isProd = window.location.host.includes('sepolia');
 
         if (type === 'termsOfService') {
           if (isProd) {
