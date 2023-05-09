@@ -773,20 +773,26 @@ footer {
   }
 }
 
-@media (max-width: 1260px) {
-  main {
-    section.container {
-      padding: 0px 26px;
-    }
+@media (max-width: 1540px) {
+  .navbar {
+    padding: 0 30px !important;
   }
 
   footer {
     .footer-body.container {
-      padding: 0 35px;
+      padding: 0 30px;
 
       & > div:nth-child(3) {
         font-size: 14px;
       }
+    }
+  }
+}
+
+@media (max-width: 1260px) {
+  main {
+    section.container {
+      padding: 0px 26px;
     }
   }
 }
