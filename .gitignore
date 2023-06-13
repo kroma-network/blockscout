@@ -56,3 +56,5 @@ screenshots/
 *.iml
 
 .vscode
+
+env.sh
