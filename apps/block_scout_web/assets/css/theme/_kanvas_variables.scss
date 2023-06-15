@@ -74,18 +74,10 @@ main {
     .from-to-address {
       display: flex;
 
-      a {
+      a[data-test="address_hash_link"] {
         width: auto;
         max-width: 50%;
         color: $primary-700 !important;
-      }
-
-      a:first-child {
-        margin-right: 5px;
-      }
-
-      a:last-child {
-        margin-left: 5px;
       }
     }
 
@@ -1038,13 +1030,17 @@ footer {
 
     .tile-type-internal-transaction {
       .from-to-address {
-        a {
-          width: fit-content;
-        }
-      }
+        a[data-test="address_hash_link"] {
+          width: calc(50% - 15px);
 
-      .transation-content {
-        max-width: 100%;
+          span[data-address-hash] {
+            width: 100%;
+          }
+        }
+
+        span[data-address-hash] {
+          width: calc(50% - 15px);
+        }
       }
 
       .mobile-ellipsis {
@@ -1614,22 +1610,6 @@ footer {
 
         span[data-address-hash] {
           width: calc(50% - 53px);
-        }
-      }
-
-      .mobile-ellipsis {
-        width: 100%;
-      }
-    }
-
-    .tile-type-internal-transaction {
-      .from-to-address {
-        a[data-test="address_hash_link"] {
-          width: calc(50% - 15px);
-        }
-
-        span[data-address-hash] {
-          width: calc(50% - 15px);
         }
       }
 
