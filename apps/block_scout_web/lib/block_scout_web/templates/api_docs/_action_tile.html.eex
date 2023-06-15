@@ -129,7 +129,7 @@
         </div>
         <div class="col-sm-2 col-md-2 mt-2 mt-md-0">
           <button
-            class="collapse button button-secondary w-100"
+            class="collapse button button-primary w-100"
             data-action="<%= @action.name %>"
             data-module="<%= @module_name %>"
             data-selector='<%= "#{@module_name}-#{@action.name}-btn-try-api-clear" %>'

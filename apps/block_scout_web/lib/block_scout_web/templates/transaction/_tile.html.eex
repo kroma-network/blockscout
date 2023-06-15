@@ -7,9 +7,6 @@
     <!-- Color Block -->
     <div class="tile-transaction-type-block col-md-2">
       <div class="tile-label-group">
-        <%= if error_in_internal_tx do %>
-          <%= render BlockScoutWeb.CommonComponentsView, "_i_tooltip_2.html", text: gettext("Error in internal transactions"), additional_classes: ["color-inherit"] %>
-        <% end %>
         <span class="tile-label" data-test="transaction_type">
           <%= transaction_display_type(@transaction) %>
         </span>

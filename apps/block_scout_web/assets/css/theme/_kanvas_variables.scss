@@ -70,6 +70,34 @@ main {
     }
   }
 
+  .tile-type-internal-transaction {
+    .from-to-address {
+      display: flex;
+
+      a {
+        width: auto;
+        max-width: 50%;
+        color: $primary-700 !important;
+      }
+
+      a:first-child {
+        margin-right: 5px;
+      }
+
+      a:last-child {
+        margin-left: 5px;
+      }
+    }
+
+    .mobile-ellipsis {
+      display: inline-block;
+      width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
   &.js-ad-dependant-pt {
     padding: 0 !important;
   }
@@ -194,8 +222,12 @@ main {
     height: auto;
     padding: 30px;
     margin: 0 !important;
-    background: linear-gradient(90.59deg, #00f5a0 0.07%, #1bed48 100.43%),
-      linear-gradient(0deg, rgba(25, 27, 31, 0.12), rgba(25, 27, 31, 0.12));
+    background: linear-gradient(
+        0deg,
+        rgba(25, 27, 31, 0.12),
+        rgba(25, 27, 31, 0.12)
+      ),
+      linear-gradient(90.59deg, #00f5a0 0.07%, #1bed48 100.43%);
     // background-color: $primary !important;
     // background-image: linear-gradient(to bottom, $dashboard-banner-gradient-start, $dashboard-banner-gradient-end);
 
@@ -340,8 +372,13 @@ $text-muted: #8f8f8f;
 
 .tile.tile-type-block,
 .tile.tile-type-reorg,
-.tile-type-internal-transaction {
+.tile-type-internal-transaction,
+.tile-type-token-transfer {
   border-left: 4px solid $primary !important;
+
+  .tile-label {
+    color: $primary !important;
+  }
 
   .tile-transaction-type-block {
     background-color: rgba($primary, 0.1) !important;
@@ -358,6 +395,25 @@ $text-muted: #8f8f8f;
 
   .progress .progress-bar {
     background-color: $primary;
+  }
+
+  &.tile[class*="status--error"] {
+    .tile-label {
+      color: $red-500 !important;
+    }
+    border-left: 4px solid $red-500 !important;
+    .tile-transaction-type-block {
+      background-color: rgba($red-500, 0.1) !important;
+      border-bottom: 1px solid $red-500 !important;
+      border-right: 1px solid $red-500 !important;
+      border-top: 1px solid $red-500 !important;
+      color: $red-500 !important;
+
+      @include media-breakpoint-down(sm) {
+        background: none !important;
+        border: none !important;
+      }
+    }
   }
 }
 
@@ -399,20 +455,20 @@ $text-muted: #8f8f8f;
     background-color: $primary-400;
     color: white;
   }
-}
 
-.tile[class*="status--error"] {
-  .tile-label {
-    color: white !important;
-  }
+  &.tile[class*="status--error"] {
+    .tile-label {
+      color: white !important;
+    }
 
-  .tile-status-label-group {
-    background-color: $red-500;
-  }
+    .tile-status-label-group {
+      background-color: $red-500;
+    }
 
-  .tile-status-error-label {
-    padding: 10px;
-    color: $red-500;
+    .tile-status-error-label {
+      padding: 10px;
+      color: $red-500;
+    }
   }
 }
 
@@ -967,6 +1023,22 @@ footer {
     .tile.tile-type-transaction {
       .from-to-address {
         a[data-test="address_hash_link"] {
+          width: fit-content;
+        }
+      }
+
+      .transation-content {
+        max-width: 100%;
+      }
+
+      .mobile-ellipsis {
+        width: 100%;
+      }
+    }
+
+    .tile-type-internal-transaction {
+      .from-to-address {
+        a {
           width: fit-content;
         }
       }
@@ -1547,6 +1619,28 @@ footer {
 
       .mobile-ellipsis {
         width: 100%;
+      }
+    }
+
+    .tile-type-internal-transaction {
+      .from-to-address {
+        a[data-test="address_hash_link"] {
+          width: calc(50% - 15px);
+        }
+
+        span[data-address-hash] {
+          width: calc(50% - 15px);
+        }
+      }
+
+      .mobile-ellipsis {
+        width: 100%;
+      }
+    }
+
+    .tile .tile-bottom-contents {
+      .text-truncate span {
+        color: $primary !important;
       }
     }
 
