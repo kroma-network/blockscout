@@ -70,7 +70,9 @@ main {
     }
   }
 
-  .tile-type-internal-transaction {
+  .tile.tile-type-internal-transaction,
+  .tile.tile-type-token-transfer,
+  .tile.tile-type-contract-call {
     .from-to-address {
       display: flex;
 
@@ -1028,13 +1030,18 @@ footer {
       }
     }
 
-    .tile-type-internal-transaction {
+    .tile.tile-type-internal-transaction,
+    .tile.tile-type-token-transfer,
+    .tile.tile-type-contract-call {
       .from-to-address {
         a[data-test="address_hash_link"] {
           width: calc(50% - 15px);
 
           span[data-address-hash] {
             width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
           }
         }
 
