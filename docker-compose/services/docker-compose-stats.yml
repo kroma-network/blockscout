@@ -14,8 +14,8 @@ services:
       - 7433:5432
 
   stats:
-    depends_on:
-      - stats-db
+    #depends_on:
+    #  - stats-db
     image: ghcr.io/blockscout/stats:${STATS_DOCKER_TAG:-latest}
     pull_policy: always
     restart: always
@@ -25,8 +25,8 @@ services:
     env_file:
       -  ../envs/common-stats.env
     environment:
-      - STATS__DB_URL=postgres://postgres:@stats-db:5432/stats
-      - STATS__BLOCKSCOUT_DB_URL=postgresql://postgres:@host.docker.internal:7432/blockscout?ssl=false
+      - STATS__DB_URL=postgres://blockscout:YKWiMHY76rrgJWHn3e@db-blockscout.sail.kroma.internal:5432/stats
+      - STATS__BLOCKSCOUT_DB_URL=postgresql://blockscout:YKWiMHY76rrgJWHn3e@db-blockscout.sail.kroma.internal:5432/blockscout?ssl=false
       - STATS__CREATE_DATABASE=true
       - STATS__RUN_MIGRATIONS=true
     ports:
