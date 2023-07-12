@@ -9,7 +9,7 @@ services:
     extra_hosts:
       - 'host.docker.internal:host-gateway'
     env_file:
-      -  ../envs/common-stats.env
+      -  ../envs/common-stats-sepolia.env
     ports:
       - 8153:8050
     volumes:
