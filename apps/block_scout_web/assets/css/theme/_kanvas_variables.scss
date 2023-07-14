@@ -6,7 +6,7 @@ $red-500: #ef4444;
 $secondary: #5849ff;
 $white: #fff;
 $black: #191919;
-$font-family: "Pretendard";
+$font-family: 'Pretendard';
 
 $header-toggler-icon-black: "data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#{transparentize($black, 0.5)}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E" !default;
 $header-toggler-icon-primary: "data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#{transparentize($primary, 0.5)}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E" !default;
@@ -31,8 +31,8 @@ main {
     display: none;
   }
 
-  section[data-page="address-details"],
-  section[data-page="transaction-details"] {
+  section[data-page='address-details'],
+  section[data-page='transaction-details'] {
     .row {
       margin: 0 !important;
     }
@@ -46,7 +46,7 @@ main {
     .from-to-address {
       display: flex;
 
-      a[data-test="address_hash_link"] {
+      a[data-test='address_hash_link'] {
         width: auto;
         max-width: 50%;
         color: $primary-700 !important;
@@ -76,7 +76,7 @@ main {
     .from-to-address {
       display: flex;
 
-      a[data-test="address_hash_link"] {
+      a[data-test='address_hash_link'] {
         width: auto;
         max-width: 50%;
         color: $primary-700 !important;
@@ -216,11 +216,7 @@ main {
     height: auto;
     padding: 30px;
     margin: 0 !important;
-    background: linear-gradient(
-        0deg,
-        rgba(25, 27, 31, 0.12),
-        rgba(25, 27, 31, 0.12)
-      ),
+    background: linear-gradient(0deg, rgba(25, 27, 31, 0.12), rgba(25, 27, 31, 0.12)),
       linear-gradient(90.59deg, #00f5a0 0.07%, #1bed48 100.43%);
     // background-color: $primary !important;
     // background-image: linear-gradient(to bottom, $dashboard-banner-gradient-start, $dashboard-banner-gradient-end);
@@ -285,7 +281,7 @@ main {
 
 .dropdown-toggle::after {
   border: unset !important;
-  background-image: url("../static/images/icon-chevron-down.svg");
+  background-image: url('../static/images/icon-chevron-down.svg');
   width: 12px;
   height: 7px;
 }
@@ -321,8 +317,7 @@ main {
   //   rgba(66, 255, 142, 0.82) 72.21%,
   //   rgba(124, 0, 222, 0.94) 95.29%
   // );
-  background-image: linear-gradient(89.7deg, #50e238 2.5%, #25e898 97.77%),
-    linear-gradient(0deg, #ffffff, #ffffff);
+  background-image: linear-gradient(89.7deg, #50e238 2.5%, #25e898 97.77%), linear-gradient(0deg, #ffffff, #ffffff);
   background-origin: border-box;
   border: 2.5px solid transparent !important;
   border-radius: 4px;
@@ -359,6 +354,14 @@ main {
   // }
 }
 
+.menu-label-bottom {
+  font-size: 12px;
+  color: #9da3af;
+  text-align: center;
+  margin-top: 1px;
+  cursor: pointer;
+}
+
 $tile-type-transaction-color: white;
 $tile-body-a-color: $primary-700;
 $tile-title-color: $black;
@@ -391,7 +394,7 @@ $text-muted: #8f8f8f;
     background-color: $primary;
   }
 
-  &.tile[class*="status--error"] {
+  &.tile[class*='status--error'] {
     .tile-label {
       color: $red-500 !important;
     }
@@ -450,7 +453,7 @@ $text-muted: #8f8f8f;
     color: white;
   }
 
-  &.tile[class*="status--error"] {
+  &.tile[class*='status--error'] {
     .tile-label {
       color: white !important;
     }
@@ -750,7 +753,8 @@ $btn-line-color: #000000;
             display: block;
           }
 
-          .menu-label {
+          .menu-label-bottom,
+          .menu-label:not(.no-margin) {
             margin-bottom: 77px;
           }
         }
@@ -809,8 +813,7 @@ footer {
   .footer-logo {
     width: 140px;
     height: 33px;
-    filter: invert(58%) sepia(15%) saturate(202%) hue-rotate(169deg)
-      brightness(93%) contrast(91%);
+    filter: invert(58%) sepia(15%) saturate(202%) hue-rotate(169deg) brightness(93%) contrast(91%);
     opacity: 0.7;
   }
 
@@ -839,19 +842,19 @@ footer {
         }
 
         &.discord {
-          background-image: url("../static/images/icon_discord.svg");
+          background-image: url('../static/images/icon_discord.svg');
         }
 
         &.twitter {
-          background-image: url("../static/images/icon_twitter.svg");
+          background-image: url('../static/images/icon_twitter.svg');
         }
 
         &.medium {
-          background-image: url("../static/images/icon_medium.svg");
+          background-image: url('../static/images/icon_medium.svg');
         }
 
         &.docs {
-          background-image: url("../static/images/icon_docs.svg");
+          background-image: url('../static/images/icon_docs.svg');
         }
       }
     }
@@ -946,7 +949,7 @@ footer {
       cursor: pointer;
 
       &:before {
-        content: "";
+        content: '';
         position: absolute;
         top: 3px;
         left: -12px;
@@ -1016,7 +1019,7 @@ footer {
 
     .tile.tile-type-transaction {
       .from-to-address {
-        a[data-test="address_hash_link"] {
+        a[data-test='address_hash_link'] {
           width: fit-content;
         }
       }
@@ -1034,7 +1037,7 @@ footer {
     .tile.tile-type-token-transfer,
     .tile.tile-type-contract-call {
       .from-to-address {
-        a[data-test="address_hash_link"] {
+        a[data-test='address_hash_link'] {
           width: calc(50% - 15px);
 
           span[data-address-hash] {
@@ -1055,7 +1058,7 @@ footer {
       }
     }
 
-    div[data-selector="chain-block-list"] {
+    div[data-selector='chain-block-list'] {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr;
       grid-gap: 10px;
@@ -1225,7 +1228,7 @@ footer {
       }
     }
 
-    span[data-selector="transactions-list"] {
+    span[data-selector='transactions-list'] {
       .tile-transaction-type-block {
         position: absolute;
         top: 0;
@@ -1370,7 +1373,7 @@ footer {
       }
     }
 
-    .navbar-toggler[aria-expanded="true"] {
+    .navbar-toggler[aria-expanded='true'] {
       .navbar-toggler-icon {
         width: 20px !important;
         height: 20px !important;
@@ -1378,7 +1381,7 @@ footer {
       }
     }
 
-    .navbar-toggler[aria-expanded="false"] {
+    .navbar-toggler[aria-expanded='false'] {
       .navbar-toggler-icon {
         width: 20px !important;
         height: 20px !important;
@@ -1394,11 +1397,11 @@ footer {
     }
 
     .navbar.navbar-primary .navbar-toggler .navbar-toggler-icon {
-      background-image: url("../static/images/icons/icon-menu.svg") !important;
+      background-image: url('../static/images/icons/icon-menu.svg') !important;
     }
 
     .navbar-toggler .navbar-toggler-icon {
-      background-image: url("../static/images/icons/icon-menu.svg") !important;
+      background-image: url('../static/images/icons/icon-menu.svg') !important;
     }
 
     .form-control {
@@ -1611,7 +1614,7 @@ footer {
   main {
     .tile.tile-type-transaction {
       .from-to-address {
-        a[data-test="address_hash_link"] {
+        a[data-test='address_hash_link'] {
           width: calc(50% - 53px);
         }
 
@@ -1631,7 +1634,7 @@ footer {
       }
     }
 
-    div[data-selector="chain-block-list"] {
+    div[data-selector='chain-block-list'] {
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-gap: 10px;
@@ -1647,8 +1650,8 @@ footer {
       }
     }
 
-    section[data-page="address-details"],
-    section[data-page="transaction-details"] {
+    section[data-page='address-details'],
+    section[data-page='transaction-details'] {
       .js-ad-dependant-mb-3-wrapper {
         padding: 0;
       }
@@ -1668,7 +1671,7 @@ footer {
 
 @media (max-width: 370px) {
   main {
-    div[data-selector="chain-block-list"] {
+    div[data-selector='chain-block-list'] {
       display: grid;
       grid-template-columns: 1fr;
       grid-gap: 10px;
