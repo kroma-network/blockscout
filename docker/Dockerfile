@@ -67,4 +67,4 @@ WORKDIR /app
 
 COPY --from=builder /opt/release/blockscout .
 COPY --from=builder /app/config/config_helper.exs ./config/config_helper.exs
-COPY --from=builder /app/config/config_helper.exs /app/releases/5.2.2/config_helper.exs
+COPY --from=builder /app/config/config_helper.exs /app/releases/${RELEASE_VERSION}/config_helper.exs
