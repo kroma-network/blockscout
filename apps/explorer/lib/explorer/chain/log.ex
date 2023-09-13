@@ -180,7 +180,8 @@ defmodule Explorer.Chain.Log do
         case Integer.parse(hex_part, 16) do
           {number, ""} ->
             <<method_id::binary-size(4), _rest::binary>> = :binary.encode_unsigned(number)
-            check_events_cache(events_acc, method_id, log, transaction, options)
+            {find_candidates_query(method_id, log, transaction, options), events_acc}
+            # check_events_cache(events_acc, method_id, log, transaction, options)
 
           _ ->
             {{:error, :could_not_decode}, events_acc}
