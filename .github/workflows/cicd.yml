@@ -1,5 +1,8 @@
 name: Selectable Environment CICD
 run-name: Deploy to ${{ github.event.inputs.environment }} by @${{ github.actor }}
+permissions:
+  id-token: write
+  contents: read
 
 on:
   workflow_dispatch:
@@ -33,10 +36,9 @@ jobs:
         run: echo "IMAGE_TAG=$(echo $GITHUB_SHA | cut -c1-7)" >> $GITHUB_OUTPUT
 
       - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v2
+        uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          role-to-assume: arn:aws:iam::${{ secrets.ACCOUNT_ID }}:role/${{ secrets.KROMA_GITHUB_ACTION_ROLE }}
           aws-region: ap-northeast-2
 
       - name: Login to Amazon ECR
