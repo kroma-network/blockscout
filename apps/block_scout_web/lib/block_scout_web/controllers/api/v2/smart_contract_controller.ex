@@ -6,6 +6,7 @@ defmodule BlockScoutWeb.API.V2.SmartContractController do
   import BlockScoutWeb.PagingHelper,
     only: [current_filter: 1, delete_parameters_from_next_page_params: 1, search_query: 1]
 
+  import Explorer.Chain.SmartContract, only: [burn_address_hash_string: 0]
   import Explorer.SmartContract.Solidity.Verifier, only: [parse_boolean: 1]
 
   alias BlockScoutWeb.{AccessHelper, AddressView}
@@ -13,7 +14,6 @@ defmodule BlockScoutWeb.API.V2.SmartContractController do
   alias Explorer.Chain
   alias Explorer.Chain.SmartContract
   alias Explorer.SmartContract.{Reader, Writer}
-  alias Explorer.SmartContract.Solidity.PublishHelper
 
   @smart_contract_address_options [
     necessity_by_association: %{
@@ -26,16 +26,13 @@ defmodule BlockScoutWeb.API.V2.SmartContractController do
 
   @api_true [api?: true]
 
-  @burn_address "0x0000000000000000000000000000000000000000"
-
   action_fallback(BlockScoutWeb.API.V2.FallbackController)
 
   def smart_contract(conn, %{"address_hash" => address_hash_string} = params) do
     with {:format, {:ok, address_hash}} <- {:format, Chain.string_to_address_hash(address_hash_string)},
          {:ok, false} <- AccessHelper.restricted_access?(address_hash_string, params),
-         _ <- PublishHelper.check_and_verify(address_hash_string),
          {:not_found, {:ok, address}} <-
-           {:not_found, Chain.find_contract_address(address_hash, @smart_contract_address_options, true)} do
+           {:not_found, Chain.find_contract_address(address_hash, @smart_contract_address_options, false)} do
       conn
       |> put_status(200)
       |> render(:smart_contract, %{address: address})
@@ -109,7 +106,7 @@ defmodule BlockScoutWeb.API.V2.SmartContractController do
         address.smart_contract
         |> SmartContract.get_implementation_address_hash(@api_true)
         |> Tuple.to_list()
-        |> List.first() || @burn_address
+        |> List.first() || burn_address_hash_string()
 
       conn
       |> put_status(200)
@@ -131,7 +128,7 @@ defmodule BlockScoutWeb.API.V2.SmartContractController do
         address.smart_contract
         |> SmartContract.get_implementation_address_hash(@api_true)
         |> Tuple.to_list()
-        |> List.first() || @burn_address
+        |> List.first() || burn_address_hash_string()
 
       conn
       |> put_status(200)

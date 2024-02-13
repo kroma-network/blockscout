@@ -40,6 +40,7 @@ defmodule Explorer.ExchangeRates.Source.CoinMarketCap do
         id: id,
         last_updated: last_updated,
         market_cap_usd: to_decimal(market_cap_data_usd),
+        tvl_usd: nil,
         name: token_properties["name"],
         symbol: String.upcase(token_properties["symbol"]),
         usd_value: current_price,
@@ -107,7 +108,11 @@ defmodule Explorer.ExchangeRates.Source.CoinMarketCap do
          true <- Enum.count(token_values_list) > 0,
          token_values <- token_values_list |> Enum.at(0),
          true <- Enum.count(token_values) > 0 do
-      token_values |> Enum.at(0)
+      if is_list(token_values) do
+        token_values |> Enum.at(0)
+      else
+        token_values
+      end
     else
       _ -> %{}
     end

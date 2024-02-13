@@ -1,8 +1,10 @@
 defmodule BlockScoutWeb.AddressContractView do
   use BlockScoutWeb, :view
 
+  import Explorer.Helper, only: [decode_data: 2]
+
   alias ABI.FunctionSelector
-  alias Explorer.{Chain, Helper}
+  alias Explorer.Chain
   alias Explorer.Chain.{Address, Data, InternalTransaction, Transaction}
 
   def render("scripts.html", %{conn: conn}) do
